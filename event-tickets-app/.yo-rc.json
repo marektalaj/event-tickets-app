@@ -1,0 +1,38 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "org.kupbilet.tickets",
+            "nativeLanguage": "en"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "monolith",
+        "baseName": "kupbiletpl",
+        "packageName": "org.kupbilet.tickets",
+        "packageFolder": "org/kupbilet/tickets",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "ZjU4ZWY1ZGUzZjE4ODBjYjA5ZTNiMzMzZmU5OWIwNGI2NTU5YTg0OGU1YWUxNDQzNDc0ZWZjMmJmMGRmMjM2NmZmYTkyYmUzODIxNTk5YWQ5OTFiYjBjNmIxYTdjNGFlNTk3MjE2MzlmODk4NzNmN2U2NDExNGIxZDc5ZWI1NjA=",
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "en",
+        "languages": ["en"]
+    }
+}
