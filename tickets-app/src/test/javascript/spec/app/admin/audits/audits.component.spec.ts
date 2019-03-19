@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
-import { TicketsappTestModule } from '../../../test.module';
+import { TicketsTestModule } from '../../../test.module';
 import { AuditsComponent } from 'app/admin/audits/audits.component';
 import { AuditsService } from 'app/admin/audits/audits.service';
 import { Audit } from 'app/admin/audits/audit.model';
@@ -38,7 +38,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [TicketsappTestModule],
+                imports: [TicketsTestModule],
                 declarations: [AuditsComponent],
                 providers: [AuditsService]
             })

@@ -27,9 +27,9 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/ticketsapp?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-        username: root
-        password:
+        url: jdbc:mysql://185.23.21.106/videomixhd_kupbilet
+        username: videomixhd_bilet
+        password: Kupbilet
         hikari:
             poolName: Hikari
             auto-commit: false
@@ -61,7 +61,7 @@ spring:
 
 # ===================================================================
 # To enable TLS in production, generate a certificate using:
-# keytool -genkey -alias ticketsapp -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+# keytool -genkey -alias tickets -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
 #
 # You can also use Let's Encrypt:
 # https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
@@ -74,7 +74,7 @@ spring:
 #        key-store: classpath:config/tls/keystore.p12
 #        key-store-password: password
 #        key-store-type: PKCS12
-#        key-alias: ticketsapp
+#        key-alias: tickets
 #        # The ciphers suite enforce the security by deactivating some old and deprecated SSL cipher, this list was tested against SSL Labs (https://www.ssllabs.com/ssltest/)
 #        ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 ,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
 # ===================================================================
@@ -108,12 +108,12 @@ jhipster:
                 # - In the JHipster Registry (which includes a Spring Cloud Config server)
                 # - In a separate `application-prod.yml` file, in the same folder as your executable WAR file
                 # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-                base64-secret: MGFhZTFjZWU0N2EyYjBmZTg5ZWYxYzZjNzQ4OTY5ODkxYmM4MGM3ZmZhYjAyZmNhYmQ2M2ZhNWVlZWMwNWU3MjM0YTVmNTc5ZTNjNmQ1MTcxM2VjZjRhMDc5OTE3N2RiMzQyZTc0OWE3MTc4NDBjYjZlYWNjMTlhODg2YzcxZDM=
+                base64-secret: ZTk0ZTcwYjA3MzIxNTViYWVkNDM2ZjcyZTcxYzllZmQ0OTAwZDY3ZTA3MDg3ODJjZmEyNjAzODMzNTRjMDU5M2Q3YzkyOTk4NzllZjE2ZjAwNDQ0MGNiZDk3MTNkYzg2NDE1ZjNlMDM2ODI2MDcxZTk5NGE4MTc3MmZhOWQxMWY=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
                 token-validity-in-seconds-for-remember-me: 2592000
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: ticketsapp@localhost
+        from: tickets@localhost
         base-url: http://my-server-url-to-change # Modify according to your server's URL
     metrics:
         logs: # Reports metrics in the logs

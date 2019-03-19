@@ -11,12 +11,12 @@ import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { TicketsappSharedModule } from 'app/shared';
-import { TicketsappCoreModule } from 'app/core';
-import { TicketsappAppRoutingModule } from './app-routing.module';
-import { TicketsappHomeModule } from './home/home.module';
-import { TicketsappAccountModule } from './account/account.module';
-import { TicketsappEntityModule } from './entities/entity.module';
+import { TicketsSharedModule } from 'app/shared';
+import { TicketsCoreModule } from 'app/core';
+import { TicketsAppRoutingModule } from './app-routing.module';
+import { TicketsHomeModule } from './home/home.module';
+import { TicketsAccountModule } from './account/account.module';
+import { TicketsEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
@@ -32,13 +32,13 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
             i18nEnabled: true,
             defaultI18nLang: 'en'
         }),
-        TicketsappSharedModule.forRoot(),
-        TicketsappCoreModule,
-        TicketsappHomeModule,
-        TicketsappAccountModule,
+        TicketsSharedModule.forRoot(),
+        TicketsCoreModule,
+        TicketsHomeModule,
+        TicketsAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
-        TicketsappEntityModule,
-        TicketsappAppRoutingModule
+        TicketsEntityModule,
+        TicketsAppRoutingModule
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
     providers: [
@@ -65,7 +65,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     ],
     bootstrap: [JhiMainComponent]
 })
-export class TicketsappAppModule {
+export class TicketsAppModule {
     constructor(private dpConfig: NgbDatepickerConfig) {
         this.dpConfig.minDate = { year: moment().year() - 100, month: 1, day: 1 };
     }

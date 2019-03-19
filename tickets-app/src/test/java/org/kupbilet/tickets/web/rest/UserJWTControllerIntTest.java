@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.web.rest;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.UserRepository;
 import org.kupbilet.tickets.security.jwt.TokenProvider;
@@ -32,7 +32,7 @@ import static org.hamcrest.Matchers.not;
  * @see UserJWTController
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 public class UserJWTControllerIntTest {
 
     @Autowired

@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.repository;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.config.Constants;
 import org.kupbilet.tickets.config.audit.AuditEventConverter;
 import org.kupbilet.tickets.domain.PersistentAuditEvent;
@@ -31,7 +31,7 @@ import static org.kupbilet.tickets.repository.CustomAuditEventRepository.EVENT_D
  * @see CustomAuditEventRepository
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 @Transactional
 public class CustomAuditEventRepositoryIntTest {
 

@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.security;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.UserRepository;
 
@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @see DomainUserDetailsService
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 @Transactional
 public class DomainUserDetailsServiceIntTest {
 

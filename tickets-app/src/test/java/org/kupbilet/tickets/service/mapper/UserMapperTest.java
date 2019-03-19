@@ -1,7 +1,7 @@
 package org.kupbilet.tickets.service.mapper;
 
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.service.dto.UserDTO;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @see UserMapper
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 public class UserMapperTest {
 
     private static final String DEFAULT_LOGIN = "johndoe";

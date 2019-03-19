@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.web.rest.errors;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 public class ExceptionTranslatorIntTest {
 
     @Autowired

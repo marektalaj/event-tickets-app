@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.web.rest;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.domain.Authority;
 import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.UserRepository;
@@ -42,7 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see UserResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 public class UserResourceIntTest {
 
     private static final String DEFAULT_LOGIN = "johndoe";

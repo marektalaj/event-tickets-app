@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.service;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.config.Constants;
 import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.UserRepository;
@@ -36,7 +36,7 @@ import static org.mockito.Mockito.when;
  * @see UserService
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 @Transactional
 public class UserServiceIntTest {
 

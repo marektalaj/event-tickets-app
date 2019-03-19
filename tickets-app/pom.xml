@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.kupbilet.tickets</groupId>
-    <artifactId>ticketsapp</artifactId>
+    <artifactId>tickets</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Ticketsapp</name>
+    <name>Tickets</name>
 
     <repositories>
         <!-- jhipster-needle-maven-repository -->
@@ -475,7 +475,7 @@
                           <image>openjdk:8-jre-alpine</image>
                       </from>
                       <to>
-                          <image>ticketsapp:latest</image>
+                          <image>tickets:latest</image>
                       </to>
                       <container>
                           <entrypoint>
@@ -502,8 +502,8 @@
                         <changeLogFile>${project.basedir}/src/main/resources/config/liquibase/master.xml</changeLogFile>
                         <diffChangeLogFile>${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                         <driver>com.mysql.jdbc.Driver</driver>
-                        <url>jdbc:mysql://localhost:3306/ticketsapp</url>
-                        <defaultSchemaName>ticketsapp</defaultSchemaName>
+                        <url>jdbc:mysql://localhost:3306/tickets</url>
+                        <defaultSchemaName>tickets</defaultSchemaName>
                         <username>root</username>
                         <password></password>
                         <referenceUrl>hibernate:spring:org.kupbilet.tickets.domain?dialect=org.hibernate.dialect.MySQL5InnoDBDialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>

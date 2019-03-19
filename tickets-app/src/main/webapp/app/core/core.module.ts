@@ -17,7 +17,7 @@ import locale from '@angular/common/locales/en';
         DatePipe
     ]
 })
-export class TicketsappCoreModule {
+export class TicketsCoreModule {
     constructor() {
         registerLocaleData(locale);
     }

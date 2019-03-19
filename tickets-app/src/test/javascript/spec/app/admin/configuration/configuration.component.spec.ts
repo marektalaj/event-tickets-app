@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
-import { TicketsappTestModule } from '../../../test.module';
+import { TicketsTestModule } from '../../../test.module';
 import { JhiConfigurationComponent } from 'app/admin/configuration/configuration.component';
 import { JhiConfigurationService } from 'app/admin/configuration/configuration.service';
 import { ITEMS_PER_PAGE } from 'app/shared';
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [TicketsappTestModule],
+                imports: [TicketsTestModule],
                 declarations: [JhiConfigurationComponent],
                 providers: [JhiConfigurationService]
             })

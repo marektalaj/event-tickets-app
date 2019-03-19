@@ -36,9 +36,9 @@ spring:
             indent-output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/ticketsapp?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-        username: root
-        password:
+        url: jdbc:mysql://185.23.21.106/videomixhd_kupbilet
+        username: videomixhd_bilet
+        password: Kupbilet
         hikari:
             poolName: Hikari
             auto-commit: false
@@ -98,12 +98,12 @@ jhipster:
         authentication:
             jwt:
                 # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-                base64-secret: MGFhZTFjZWU0N2EyYjBmZTg5ZWYxYzZjNzQ4OTY5ODkxYmM4MGM3ZmZhYjAyZmNhYmQ2M2ZhNWVlZWMwNWU3MjM0YTVmNTc5ZTNjNmQ1MTcxM2VjZjRhMDc5OTE3N2RiMzQyZTc0OWE3MTc4NDBjYjZlYWNjMTlhODg2YzcxZDM=
+                base64-secret: ZTk0ZTcwYjA3MzIxNTViYWVkNDM2ZjcyZTcxYzllZmQ0OTAwZDY3ZTA3MDg3ODJjZmEyNjAzODMzNTRjMDU5M2Q3YzkyOTk4NzllZjE2ZjAwNDQ0MGNiZDk3MTNkYzg2NDE1ZjNlMDM2ODI2MDcxZTk5NGE4MTc3MmZhOWQxMWY=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
                 token-validity-in-seconds-for-remember-me: 2592000
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: ticketsapp@localhost
+        from: tickets@localhost
         base-url: http://127.0.0.1:8080
     metrics:
         logs: # Reports metrics in the logs

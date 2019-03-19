@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.web.rest;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.config.Constants;
 import org.kupbilet.tickets.domain.Authority;
 import org.kupbilet.tickets.domain.User;
@@ -48,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AccountResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 public class AccountResourceIntTest {
 
     @Autowired

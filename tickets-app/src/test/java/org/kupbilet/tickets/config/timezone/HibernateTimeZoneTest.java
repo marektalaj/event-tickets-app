@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.config.timezone;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.repository.timezone.DateTimeWrapper;
 import org.kupbilet.tickets.repository.timezone.DateTimeWrapperRepository;
 import org.junit.Before;
@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Unit tests for the UTC Hibernate configuration.
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 public class HibernateTimeZoneTest {
 
     @Autowired

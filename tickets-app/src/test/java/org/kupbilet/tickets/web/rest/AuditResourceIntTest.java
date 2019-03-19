@@ -1,6 +1,6 @@
 package org.kupbilet.tickets.web.rest;
 
-import org.kupbilet.tickets.TicketsappApp;
+import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.config.audit.AuditEventConverter;
 import org.kupbilet.tickets.domain.PersistentAuditEvent;
 import org.kupbilet.tickets.repository.PersistenceAuditEventRepository;
@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AuditResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TicketsappApp.class)
+@SpringBootTest(classes = TicketsApp.class)
 @Transactional
 public class AuditResourceIntTest {
 

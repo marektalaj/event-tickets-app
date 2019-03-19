@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { TicketsappSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from './';
+import { TicketsSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from './';
 
 @NgModule({
-    imports: [TicketsappSharedLibsModule],
+    imports: [TicketsSharedLibsModule],
     declarations: [FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent],
-    exports: [TicketsappSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent]
+    exports: [TicketsSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent]
 })
-export class TicketsappSharedCommonModule {}
+export class TicketsSharedCommonModule {}
