@@ -15,6 +15,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
+                <th><span jhiTranslate="ticketsApp.event.categoryId">ID</span></th>
             <th><span jhiTranslate="ticketsApp.event.name">Name</span></th>
             <th><span jhiTranslate="ticketsApp.event.eventDate">Event Date</span></th>
             <th><span jhiTranslate="ticketsApp.event.eventAddress">Event Address</span></th>
@@ -26,6 +27,7 @@
             <tbody>
             <tr *ngFor="let event of events ;trackBy: trackId">
                 <td><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a></td>
+                <td>{{event.categoryId}}</td>
                 <td>{{event.name}}</td>
                 <td>{{event.eventDate | date:'medium'}}</td>
                 <td>{{event.eventAddress}}</td>

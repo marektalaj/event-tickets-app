@@ -170,7 +170,7 @@ public class EventResourceIntTest {
             .andExpect(jsonPath("$.[*].amountOfTickets").value(hasItem(DEFAULT_AMOUNT_OF_TICKETS.intValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getEvent() throws Exception {

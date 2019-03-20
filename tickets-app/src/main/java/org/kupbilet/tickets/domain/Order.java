@@ -14,13 +14,14 @@ import java.util.Objects;
  * A Order.
  */
 @Entity
-@Table(name = "jhi_order")
+@Table(name = "orders")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
+    @Column(name="ID_Order")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

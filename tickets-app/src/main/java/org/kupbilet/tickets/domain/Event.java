@@ -19,12 +19,19 @@ import java.util.Objects;
 public class Event implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
+    @Column(name="ID_Event")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @ManyToOne
+    @JoinColumn (name = "ID_Category")
+    private Category categoryId;
+
+
+
+    @Column(name = "Name")
     private String name;
 
     @Column(name = "event_date")
@@ -36,7 +43,7 @@ public class Event implements Serializable {
     @Column(name = "amount_of_tickets")
     private Long amountOfTickets;
 
-    @Column(name = "description")
+    @Column(name = "Description")
     private String description;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -55,6 +62,14 @@ public class Event implements Serializable {
     public Event name(String name) {
         this.name = name;
         return this;
+    }
+
+    public Category getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Category categoryId) {
+        this.categoryId = categoryId;
     }
 
     public void setName(String name) {
@@ -144,5 +159,9 @@ public class Event implements Serializable {
             ", amountOfTickets=" + getAmountOfTickets() +
             ", description='" + getDescription() + "'" +
             "}";
+    }
+
+    public void setEventCategory(Category category) {
+        categoryId=category;
     }
 }

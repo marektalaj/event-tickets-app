@@ -8,6 +8,9 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * A Category.
@@ -40,8 +43,13 @@ public class Category implements Serializable {
         return name;
     }
 
-    public Category name(String name) {
+    @OneToMany(mappedBy = "categoryId", cascade = CascadeType.ALL)
+    private Set<Event> events;
+
+    public Category name(String name,Event... events) {
         this.name = name;
+        this.events=Stream.of(events).collect(Collectors.toSet());
+        this.events.forEach(x ->x.setEventCategory(this));
         return this;
     }
 

@@ -15,6 +15,7 @@
             "detail": {
                 "title": "Event"
             },
+            "categoryId": "CategoryId",
             "name": "Name",
             "eventDate": "Event Date",
             "eventAddress": "Event Address",
