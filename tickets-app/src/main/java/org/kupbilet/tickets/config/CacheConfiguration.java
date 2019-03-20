@@ -38,6 +38,10 @@ public class CacheConfiguration {
             cm.createCache(org.kupbilet.tickets.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(org.kupbilet.tickets.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(org.kupbilet.tickets.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(org.kupbilet.tickets.domain.Order.class.getName(), jcacheConfiguration);
+            cm.createCache(org.kupbilet.tickets.domain.Ticket.class.getName(), jcacheConfiguration);
+            cm.createCache(org.kupbilet.tickets.domain.Event.class.getName(), jcacheConfiguration);
+            cm.createCache(org.kupbilet.tickets.domain.Category.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

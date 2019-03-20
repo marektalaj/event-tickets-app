@@ -1,0 +1,24 @@
+{
+    "name": "Ticket",
+    "fields": [
+        {
+            "fieldName": "price",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "discount",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190320114915",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "ticket",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Order",
+    "fields": [
+        {
+            "fieldName": "orderDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "isPaid",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190320114914",
+    "entityTableName": "order",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,22 @@
+{
+    "ticketsApp": {
+        "ticket": {
+            "home": {
+                "title": "Ticket",
+                "createLabel": "Dodaj Ticket",
+                "createOrEditLabel": "Dodaj lub edytuj: Ticket"
+            },
+            "created": "Utworzono nowy obiekt typu Ticket z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono obiekt typu Ticket z identyfikatorem {{ param }}",
+            "deleted": "Usunięto obiekt typu Ticket z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Ticket {{ id }}?"
+            },
+            "detail": {
+                "title": "Ticket"
+            },
+            "price": "Price",
+            "discount": "Discount"
+        }
+    }
+}
