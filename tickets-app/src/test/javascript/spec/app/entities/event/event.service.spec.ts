@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { EventService } from 'app/entities/event/event.service';
 import { IEvent, Event } from 'app/shared/model/event.model';
+import { Category } from 'app/shared/model/category.model';
 
 describe('Service Tests', () => {
     describe('Event Service', () => {
@@ -25,7 +26,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Event(0, 12, 'AAAAAAA', currentDate, 'AAAAAAA', 0, 'AAAAAAA');
+            elemDefault = new Event(0, new Category(0, 'Koncer'), 'AAAAAAA', currentDate, 'AAAAAAA', 0, 'AAAAAAA');
         });
 
         describe('Service methods', async () => {

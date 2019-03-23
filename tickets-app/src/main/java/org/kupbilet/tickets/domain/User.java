@@ -19,6 +19,8 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 import java.time.Instant;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * A user.
@@ -93,6 +95,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
+
+    @OneToMany(mappedBy = "clientId", cascade = CascadeType.ALL)
+    private Set<Order> orders;
+
 
     public Long getId() {
         return id;

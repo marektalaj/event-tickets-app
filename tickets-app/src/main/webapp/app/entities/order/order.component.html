@@ -15,6 +15,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
+                <th><span jhiTranslate="ticketsApp.order.clientId">Order Date</span></th>
             <th><span jhiTranslate="ticketsApp.order.orderDate">Order Date</span></th>
             <th><span jhiTranslate="ticketsApp.order.isPaid">Is Paid</span></th>
             <th></th>
@@ -23,6 +24,7 @@
             <tbody>
             <tr *ngFor="let order of orders ;trackBy: trackId">
                 <td><a [routerLink]="['/order', order.id, 'view' ]">{{order.id}}</a></td>
+                <td>{{order.clientId.login}}</td>
                 <td>{{order.orderDate | date:'medium'}}</td>
                 <td>{{order.isPaid}}</td>
                 <td class="text-right">

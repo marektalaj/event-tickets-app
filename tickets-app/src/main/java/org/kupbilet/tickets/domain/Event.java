@@ -161,7 +161,8 @@ public class Event implements Serializable {
             "}";
     }
 
-    public void setEventCategory(Category category) {
+    public Category setEventCategory(Category category) {
         categoryId=category;
+        return category;
     }
 }

@@ -8,6 +8,8 @@ import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { OrderService } from 'app/entities/order/order.service';
 import { IOrder, Order } from 'app/shared/model/order.model';
+import { User } from 'app/core';
+import { any } from 'codelyzer/util/function';
 
 describe('Service Tests', () => {
     describe('Order Service', () => {
@@ -24,8 +26,27 @@ describe('Service Tests', () => {
             service = injector.get(OrderService);
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
-
-            elemDefault = new Order(0, currentDate, 0);
+            // new User(1,"bolek","Adam","kolek","sdasdasda@gmail.com",false,"12312",new any[1](),"admin",new Date(),"admin",new Date(),"pass")
+            elemDefault = new Order(
+                0,
+                new User(
+                    1,
+                    'adam',
+                    'noga',
+                    'noga',
+                    'npoga',
+                    true,
+                    'reka',
+                    [1, true, 'free'],
+                    'asd',
+                    new Date(),
+                    'sdas',
+                    new Date(),
+                    'dasdas'
+                ),
+                currentDate,
+                0
+            );
         });
 
         describe('Service methods', async () => {

@@ -25,6 +25,14 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+
+    @ManyToOne
+    @JoinColumn (name = "ID_Client")
+    private User clientId;
+
+
+
     @Column(name = "order_date")
     private Instant orderDate;
 
@@ -94,5 +102,13 @@ public class Order implements Serializable {
             ", orderDate='" + getOrderDate() + "'" +
             ", isPaid=" + getIsPaid() +
             "}";
+    }
+
+    public User getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(User clientId) {
+        this.clientId = clientId;
     }
 }

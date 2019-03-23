@@ -27,7 +27,7 @@
             <tbody>
             <tr *ngFor="let event of events ;trackBy: trackId">
                 <td><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a></td>
-                <td>{{event.categoryId}}</td>
+                <td>{{event.categoryId.name}}</td>
                 <td>{{event.name}}</td>
                 <td>{{event.eventDate | date:'medium'}}</td>
                 <td>{{event.eventAddress}}</td>
