@@ -5,6 +5,14 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ticketsApp.ticket.eventId">Price</span></dt>
+                <dd>
+                    <span>{{ticket.eventId.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="ticketsApp.ticket.orderId">Price</span></dt>
+                <dd>
+                    <span>{{ticket.orderId.clientId.login}}</span>
+                </dd>
                 <dt><span jhiTranslate="ticketsApp.ticket.price">Price</span></dt>
                 <dd>
                     <span>{{ticket.price}}</span>

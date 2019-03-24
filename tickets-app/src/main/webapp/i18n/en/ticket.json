@@ -12,6 +12,8 @@
             "delete": {
                 "question": "Are you sure you want to delete Ticket {{ id }}?"
             },
+            "eventId": "Event name",
+            "orderId": "User Login",
             "detail": {
                 "title": "Ticket"
             },

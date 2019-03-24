@@ -46,12 +46,12 @@ public class Category implements Serializable {
     @OneToMany(mappedBy = "categoryId", cascade = CascadeType.ALL)
     private Set<Event> events;
 
-    public Category name(String name,Event... events) {
-        this.name = name;
-        this.events=Stream.of(events).collect(Collectors.toSet());
-        this.events.forEach(x ->x.setEventCategory(this));
-        return this;
-    }
+//    public Category name(String name,Event... events) {
+//        this.name = name;
+//        this.events=Stream.of(events).collect(Collectors.toSet());
+//        this.events.forEach(x ->x.setEventCategory(this));
+//        return this;
+//    }
 
     public void setName(String name) {
         this.name = name;

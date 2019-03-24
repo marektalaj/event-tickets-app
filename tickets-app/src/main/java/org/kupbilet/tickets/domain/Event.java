@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Event.
@@ -29,8 +30,6 @@ public class Event implements Serializable {
     @JoinColumn (name = "ID_Category")
     private Category categoryId;
 
-
-
     @Column(name = "Name")
     private String name;
 
@@ -45,6 +44,9 @@ public class Event implements Serializable {
 
     @Column(name = "Description")
     private String description;
+
+    @OneToMany(mappedBy = "eventId", cascade = CascadeType.ALL)
+    private Set<Ticket> tickets;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -161,8 +163,8 @@ public class Event implements Serializable {
             "}";
     }
 
-    public Category setEventCategory(Category category) {
-        categoryId=category;
-        return category;
-    }
+//    public Category setEventCategory(Category category) {
+//        categoryId=category;
+//        return category;
+//    }
 }

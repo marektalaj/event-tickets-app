@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Order.
@@ -38,6 +39,9 @@ public class Order implements Serializable {
 
     @Column(name = "is_paid")
     private Integer isPaid;
+
+    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL)
+    private Set<Ticket> tickets;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

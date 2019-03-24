@@ -12,6 +12,8 @@
             "delete": {
                 "question": "Czy na pewno chcesz usunąć Ticket {{ id }}?"
             },
+            "eventId": "Nazwa wydarzenia",
+            "orderId": "Login użytkownika zamawiającego",
             "detail": {
                 "title": "Ticket"
             },

@@ -6,6 +6,11 @@ import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import { TicketService } from 'app/entities/ticket/ticket.service';
 import { ITicket, Ticket } from 'app/shared/model/ticket.model';
+import { Category } from 'app/shared/model/category.model';
+import { Event } from 'app/shared/model/event.model';
+import { Order } from 'app/shared/model/order.model';
+import { User } from 'app/core';
+import moment = require('moment');
 
 describe('Service Tests', () => {
     describe('Ticket Service', () => {
@@ -20,8 +25,34 @@ describe('Service Tests', () => {
             injector = getTestBed();
             service = injector.get(TicketService);
             httpMock = injector.get(HttpTestingController);
-
-            elemDefault = new Ticket(0, 0, 0);
+            var currentDate;
+            currentDate = moment();
+            elemDefault = new Ticket(
+                0,
+                new Event(0, new Category(0, 'Koncer'), 'AAAAAAA', currentDate, 'AAAAAAA', 0, 'AAAAAAA'),
+                new Order(
+                    0,
+                    new User(
+                        1,
+                        'adam',
+                        'noga',
+                        'noga',
+                        'npoga',
+                        true,
+                        'reka',
+                        [1, true, 'free'],
+                        'asd',
+                        new Date(),
+                        'sdas',
+                        new Date(),
+                        'dasdas'
+                    ),
+                    currentDate,
+                    0
+                ),
+                0,
+                0
+            );
         });
 
         describe('Service methods', async () => {

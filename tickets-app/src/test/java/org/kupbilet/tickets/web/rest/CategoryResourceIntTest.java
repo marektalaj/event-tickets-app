@@ -84,8 +84,8 @@ public class CategoryResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Category createEntity(EntityManager em) {
-        Category category = new Category()
-            .name(DEFAULT_NAME);
+        Category category = new Category();
+
         return category;
     }
 
@@ -144,7 +144,7 @@ public class CategoryResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(category.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getCategory() throws Exception {
@@ -178,9 +178,8 @@ public class CategoryResourceIntTest {
         // Update the category
         Category updatedCategory = categoryRepository.findById(category.getId()).get();
         // Disconnect from session so that the updates on updatedCategory are not directly saved in db
-        em.detach(updatedCategory);
-        updatedCategory
-            .name(UPDATED_NAME);
+
+
 
         restCategoryMockMvc.perform(put("/api/categories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
