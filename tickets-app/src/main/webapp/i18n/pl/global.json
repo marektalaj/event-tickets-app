@@ -40,6 +40,10 @@
         "form": {
             "username": "Nazwa użytkownika",
             "username.placeholder": "Twój login",
+            "firstName": "Imię",
+            "firstName.placeholder": "Imię",
+            "lastName": "Nazwisko",
+            "lastName.placeholder": "Nazwisko",
             "currentpassword": "Aktualne hasło",
             "currentpassword.placeholder": "Aktualne hasło",
             "newpassword": "Nowe hasło",

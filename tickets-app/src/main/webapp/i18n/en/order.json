@@ -1,6 +1,7 @@
 {
     "ticketsApp": {
         "order": {
+            "clientId": "User Login",
             "home": {
                 "title": "Orders",
                 "createLabel": "Create a new Order",
