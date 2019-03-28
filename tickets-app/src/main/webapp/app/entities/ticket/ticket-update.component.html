@@ -10,6 +10,23 @@
                         [(ngModel)]="ticket.id" readonly />
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ticketsApp.ticket.eventId" for="field_event">Event</label>
+                    <select name="eventSelect" class="form-control" id="field_event" [(ngModel)]="ticket.eventId" >
+                        <option *ngFor="let event of events" [ngValue]="event">
+                            {{event.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ticketsApp.ticket.orderId" for="field_order">Order</label>
+                    <select name="orderSelect" class="form-control" id="field_order" [(ngModel)]="ticket.orderId" >
+                        <option *ngFor="let order of orders" [ngValue]="order">
+                            {{order.clientId.login}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ticketsApp.ticket.price" for="field_price">Price</label>
                     <input type="number" class="form-control" name="price" id="field_price"
                         [(ngModel)]="ticket.price" />

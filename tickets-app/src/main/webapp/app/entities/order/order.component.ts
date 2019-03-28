@@ -5,7 +5,7 @@ import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { IOrder } from 'app/shared/model/order.model';
-import { AccountService } from 'app/core';
+import { AccountService, User, UserService } from 'app/core';
 import { OrderService } from './order.service';
 
 @Component({
@@ -16,7 +16,6 @@ export class OrderComponent implements OnInit, OnDestroy {
     orders: IOrder[];
     currentAccount: any;
     eventSubscriber: Subscription;
-
     constructor(
         protected orderService: OrderService,
         protected jhiAlertService: JhiAlertService,

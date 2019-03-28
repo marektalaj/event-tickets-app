@@ -7,6 +7,8 @@ import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { IOrder } from 'app/shared/model/order.model';
 import { OrderService } from './order.service';
+import { AccountService, User, UserService } from 'app/core';
+import { JhiAlertService } from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-order-update',
@@ -16,8 +18,15 @@ export class OrderUpdateComponent implements OnInit {
     order: IOrder;
     isSaving: boolean;
     orderDate: string;
+    users: User[];
 
-    constructor(protected orderService: OrderService, protected activatedRoute: ActivatedRoute) {}
+    constructor(
+        protected orderService: OrderService,
+        protected activatedRoute: ActivatedRoute,
+        protected accountService: AccountService,
+        private userService: UserService,
+        private alertService: JhiAlertService
+    ) {}
 
     ngOnInit() {
         this.isSaving = false;
@@ -25,6 +34,12 @@ export class OrderUpdateComponent implements OnInit {
             this.order = order;
             this.orderDate = this.order.orderDate != null ? this.order.orderDate.format(DATE_TIME_FORMAT) : null;
         });
+        this.userService
+            .query()
+            .subscribe(
+                (res: HttpResponse<User[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpResponse<any>) => this.onError(res.body)
+            );
     }
 
     previousState() {
@@ -52,5 +67,11 @@ export class OrderUpdateComponent implements OnInit {
 
     protected onSaveError() {
         this.isSaving = false;
+    }
+    private onError(error) {
+        this.alertService.error(error.error, error.message, null);
+    }
+    private onSuccess(data, headers) {
+        this.users = data;
     }
 }
