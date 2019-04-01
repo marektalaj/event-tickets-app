@@ -2,9 +2,9 @@
     "ticketsApp": {
         "event": {
             "home": {
-                "title": "Event",
-                "createLabel": "Dodaj Event",
-                "createOrEditLabel": "Dodaj lub edytuj: Event"
+                "title": "Wydarzenia",
+                "createLabel": "Dodaj wydarzenie",
+                "createOrEditLabel": "Dodaj lub edytuj: Wydarzenie"
             },
             "created": "Utworzono nowy obiekt typu Event z identyfikatorem {{ param }}",
             "updated": "Uaktualniono obiekt typu Event z identyfikatorem {{ param }}",
@@ -13,14 +13,14 @@
                 "question": "Czy na pewno chcesz usunąć Event {{ id }}?"
             },
             "detail": {
-                "title": "Event"
+                "title": "Wydarzenia"
             },
             "categoryId": "Nazwa kategorii",
-            "name": "Name",
-            "eventDate": "Event Date",
-            "eventAddress": "Event Address",
-            "amountOfTickets": "Amount Of Tickets",
-            "description": "Description"
+            "name": "Nazwa wydarzenia",
+            "eventDate": "Data wydarzenia",
+            "eventAddress": "Adres Wydarzenia",
+            "amountOfTickets": "Liczba dostępnych biletów",
+            "description": "Opis wydarzenia"
         }
     }
 }

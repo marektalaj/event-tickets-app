@@ -1,9 +1,10 @@
 {
     "global": {
-        "title": "Tickets",
+        "title": "Kupbilet",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
             "home": "Home",
+            "events": "Events",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
@@ -106,7 +107,7 @@
             "edit": "Edit",
             "open": "Open",
             "save": "Save",
-            "view": "View"
+            "view": "Details"
         },
         "detail": {
             "field": "Field",
@@ -140,5 +141,5 @@
         "idexists": "A new {{ entityName }} cannot already have an ID",
         "idnull": "Invalid ID"
     },
-    "footer": "This is your footer"
+    "footer": "Created By Marek Tałaj & Szymon Pruszek ®"
 }

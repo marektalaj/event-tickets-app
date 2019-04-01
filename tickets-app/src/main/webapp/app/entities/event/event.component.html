@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="ticketsApp.event.home.title">Events</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-event" [routerLink]="['/event/new']">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-event" [routerLink]="['/event/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="ticketsApp.event.home.createLabel">
             Create new Event
@@ -14,7 +14,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span jhiTranslate="global.field.id">ID</span></th>
                 <th><span jhiTranslate="ticketsApp.event.categoryId">ID</span></th>
             <th><span jhiTranslate="ticketsApp.event.name">Name</span></th>
             <th><span jhiTranslate="ticketsApp.event.eventDate">Event Date</span></th>
@@ -26,7 +26,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let event of events ;trackBy: trackId">
-                <td><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a></td>
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'"><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a></td>
                 <td>{{event.categoryId.name}}</td>
                 <td>{{event.name}}</td>
                 <td>{{event.eventDate | date:'medium'}}</td>
@@ -41,13 +41,13 @@
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <button type="submit"
+                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
                                 [routerLink]="['/event', event.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
+                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
                                 [routerLink]="['/', 'event', { outlets: { popup: event.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"

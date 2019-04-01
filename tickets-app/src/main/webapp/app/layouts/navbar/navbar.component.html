@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark navbar-expand-md bg-dark">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <span class="logo-img"></span>
-        <span jhiTranslate="global.title" class="navbar-title">Tickets</span> <span class="navbar-version">{{version}}</span>
+        <span jhiTranslate="global.title" class="navbar-title">Kupbilet.org</span> <span class="navbar-version"></span>
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
@@ -13,6 +13,14 @@
                     <span>
                         <fa-icon icon="home"></fa-icon>
                         <span jhiTranslate="global.menu.home">Home</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="event" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="calendar-alt"></fa-icon>
+                        <span jhiTranslate="global.menu.events">Events</span>
                     </span>
                 </a>
             </li>
