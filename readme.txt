@@ -5,6 +5,16 @@ Wygenerowanie projektu,
 zmapowanie danych z bazy danych na objekty,
 poprawienie autentykacji
 02.04.2019
-Umo¿liwienie dodawania i edytowania danych wszystkich relacji
-Stworzenia zak³adki z wydarzeniami 
-(Admin mo¿e wykonywaæ wszystkie operacje, a user tylko przegl¹daæ)
+Umoï¿½liwienie dodawania i edytowania danych wszystkich relacji
+Stworzenia zakï¿½adki z wydarzeniami 
+(Admin moï¿½e wykonywaï¿½ wszystkie operacje, a user tylko przeglï¿½daï¿½)
+
+
+TODO:
+Do wiki swagger. Å»eby jako osobna aplikacje odpaliÄ‡
+
+RÃ³zny model wyÅ›wietlany i rÃ³zny model w bazie??
+DWa modele.
+Dwa requesty w javie, ktÃ³re zwracajÄ… eventy ze wszystkim.
+Testy.
+Podstawowe sortowanie.
