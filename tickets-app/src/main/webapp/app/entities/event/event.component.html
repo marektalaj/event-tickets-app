@@ -1,32 +1,63 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="ticketsApp.event.home.title">Events</span>
-        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-event" [routerLink]="['/event/new']">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity"
+                class="btn btn-primary float-right jh-create-entity create-event" [routerLink]="['/event/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="ticketsApp.event.home.createLabel">
+            <span jhiTranslate="ticketsApp.event.home.createLabel">
             Create new Event
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
+
+    <!--Search -->
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="well col-lg-4">
+                <label>Wyszukaj</label>
+                <div class="center">
+                    <i class="icon-search" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <input type="text" [(ngModel)]="searchTerm" class="form-control"
+                           placeholder="Filtruj po nazwie lub mieście" style="height: 36px">
+                </div>
+            </div>
+
+            <div class="well col-lg-4">
+                <label>Kategoria</label>
+                <ng-select
+                    [items]="categories"
+                    bindLabel="name"
+                    bindValue="id"
+                    placeholder="Wszystkie"
+                    [(ngModel)]="selectedCategory">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+    <!--//Search -->
+
     <div class="table-responsive" *ngIf="events">
         <table class="table table-striped">
             <thead>
             <tr>
-            <th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span jhiTranslate="global.field.id">ID</span></th>
+                <th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span jhiTranslate="global.field.id">ID</span></th>
                 <th><span jhiTranslate="ticketsApp.event.categoryId">ID</span></th>
-            <th><span jhiTranslate="ticketsApp.event.name">Name</span></th>
-            <th><span jhiTranslate="ticketsApp.event.eventDate">Event Date</span></th>
-            <th><span jhiTranslate="ticketsApp.event.eventAddress">Event Address</span></th>
-            <th><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></th>
-            <th><span jhiTranslate="ticketsApp.event.description">Description</span></th>
-            <th></th>
+                <th><span jhiTranslate="ticketsApp.event.name">Name</span></th>
+                <th><span jhiTranslate="ticketsApp.event.eventDate">Event Date</span></th>
+                <th><span jhiTranslate="ticketsApp.event.eventAddress">Event Address</span></th>
+                <th><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></th>
+                <th><span jhiTranslate="ticketsApp.event.description">Description</span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let event of events ;trackBy: trackId">
-                <td *jhiHasAnyAuthority="'ROLE_ADMIN'"><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a></td>
+            <tr *ngFor="let event of events | eventSearchCategory:selectedCategory| eventSearch:searchTerm ;trackBy: trackId">
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'"><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a>
+                </td>
                 <td>{{event.categoryId.name}}</td>
                 <td>{{event.name}}</td>
                 <td>{{event.eventDate | date:'medium'}}</td>

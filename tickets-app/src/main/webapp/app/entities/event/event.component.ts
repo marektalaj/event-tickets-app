@@ -7,6 +7,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IEvent } from 'app/shared/model/event.model';
 import { AccountService } from 'app/core';
 import { EventService } from './event.service';
+import { ICategory } from 'app/shared/model/category.model';
+import { CategoryService } from 'app/entities/category';
 
 @Component({
     selector: 'jhi-event',
@@ -14,17 +16,21 @@ import { EventService } from './event.service';
 })
 export class EventComponent implements OnInit, OnDestroy {
     events: IEvent[];
+    categories: ICategory[];
+    selectedCategory: any;
     currentAccount: any;
     eventSubscriber: Subscription;
+    searchTerm: string;
 
     constructor(
         protected eventService: EventService,
+        protected categoryService: CategoryService,
         protected jhiAlertService: JhiAlertService,
         protected eventManager: JhiEventManager,
         protected accountService: AccountService
     ) {}
 
-    loadAll() {
+    loadAllEvents() {
         this.eventService
             .query()
             .pipe(
@@ -39,8 +45,24 @@ export class EventComponent implements OnInit, OnDestroy {
             );
     }
 
+    getAllCategories() {
+        this.categoryService
+            .query()
+            .pipe(
+                filter((res: HttpResponse<IEvent[]>) => res.ok),
+                map((res: HttpResponse<IEvent[]>) => res.body)
+            )
+            .subscribe(
+                (res: ICategory[]) => {
+                    this.categories = res;
+                },
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+    }
+
     ngOnInit() {
-        this.loadAll();
+        this.loadAllEvents();
+        this.getAllCategories();
         this.accountService.identity().then(account => {
             this.currentAccount = account;
         });
@@ -56,7 +78,7 @@ export class EventComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInEvents() {
-        this.eventSubscriber = this.eventManager.subscribe('eventListModification', response => this.loadAll());
+        this.eventSubscriber = this.eventManager.subscribe('eventListModification', response => this.loadAllEvents());
     }
 
     protected onError(errorMessage: string) {
