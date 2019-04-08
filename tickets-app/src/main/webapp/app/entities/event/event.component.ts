@@ -26,7 +26,7 @@ export class EventComponent implements OnInit, OnDestroy {
 
     loadAll() {
         this.eventService
-            .query()
+            .queryLite()
             .pipe(
                 filter((res: HttpResponse<IEvent[]>) => res.ok),
                 map((res: HttpResponse<IEvent[]>) => res.body)

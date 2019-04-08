@@ -19,8 +19,10 @@
             "name": "Name",
             "eventDate": "Event Date",
             "eventAddress": "Event Address",
+            "price": "Ticket price",
             "amountOfTickets": "Amount Of Tickets",
-            "description": "Description"
+            "description": "Description",
+            "image": "Image"
         }
     }
 }

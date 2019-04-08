@@ -29,7 +29,7 @@ describe('Service Tests', () => {
             currentDate = moment();
             elemDefault = new Ticket(
                 0,
-                new Event(0, new Category(0, 'Koncer'), 'AAAAAAA', currentDate, 'AAAAAAA', 0, 'AAAAAAA'),
+                new Event(0, new Category(0, 'Koncer'), 'AAAAAAA', currentDate, 'AAAAAAA', 0, 0, 'aaa', 'aaa'),
                 new Order(
                     0,
                     new User(

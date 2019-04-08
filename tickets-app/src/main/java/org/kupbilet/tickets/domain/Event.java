@@ -39,11 +39,17 @@ public class Event implements Serializable {
     @Column(name = "event_address")
     private String eventAddress;
 
+    @Column(name = "price")
+    private Double price;
+
     @Column(name = "amount_of_tickets")
     private Long amountOfTickets;
 
     @Column(name = "Description")
     private String description;
+
+    @Column(name = "image")
+    private String image;
 
     @OneToMany(mappedBy = "eventId", cascade = CascadeType.ALL)
     private Set<Ticket> tickets;
@@ -124,6 +130,22 @@ public class Event implements Serializable {
     public Event description(String description) {
         this.description = description;
         return this;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setDescription(String description) {

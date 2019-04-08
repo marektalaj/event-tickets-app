@@ -5,6 +5,9 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dd>
+                    <img  src="{{path}}" alt="Event image">
+                </dd>
                 <dt><span jhiTranslate="ticketsApp.event.categoryId">CategoryId</span></dt>
                 <dd>
                     <span>{{event.categoryId.name}}</span>
@@ -20,6 +23,10 @@
                 <dt><span jhiTranslate="ticketsApp.event.eventAddress">Event Address</span></dt>
                 <dd>
                     <span>{{event.eventAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="ticketsApp.event.price">Cena</span></dt>
+                <dd>
+                    <span>{{event.price}}</span>
                 </dd>
                 <dt><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></dt>
                 <dd>

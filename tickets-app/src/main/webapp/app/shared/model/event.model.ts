@@ -7,8 +7,10 @@ export interface IEvent {
     name?: string;
     eventDate?: Moment;
     eventAddress?: string;
+    price?: number;
     amountOfTickets?: number;
     description?: string;
+    image?: string;
 }
 
 export class Event implements IEvent {
@@ -18,7 +20,9 @@ export class Event implements IEvent {
         public name?: string,
         public eventDate?: Moment,
         public eventAddress?: string,
+        public price?: number,
         public amountOfTickets?: number,
-        public description?: string
+        public description?: string,
+        public image?: string
     ) {}
 }

@@ -10,12 +10,13 @@ import { ICategory } from 'app/shared/model/category.model';
 })
 export class EventDetailComponent implements OnInit {
     event: IEvent;
-
+    path: string;
     constructor(protected activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ event }) => {
             this.event = event;
+            this.path = '../../../content/images/' + this.event.image;
         });
     }
 

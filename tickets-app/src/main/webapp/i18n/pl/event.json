@@ -19,8 +19,10 @@
             "name": "Nazwa wydarzenia",
             "eventDate": "Data wydarzenia",
             "eventAddress": "Adres Wydarzenia",
+            "price": "Cena biletu",
             "amountOfTickets": "Liczba dostępnych biletów",
-            "description": "Opis wydarzenia"
+            "description": "Opis wydarzenia",
+            "image": "Obrazek"
         }
     }
 }
