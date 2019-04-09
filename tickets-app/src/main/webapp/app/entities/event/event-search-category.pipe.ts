@@ -8,6 +8,6 @@ export class EventSearchCategoryPipe implements PipeTransform {
         if (value == null || term == null) {
             return value;
         }
-        return value.filter((x: any) => x.categoryId.id == term);
+        return value.filter((x: any) => x.categoryId.id === term);
     }
 }
