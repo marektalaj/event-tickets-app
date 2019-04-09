@@ -2,6 +2,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 import { TicketsSharedModule } from 'app/shared';
 import {
@@ -13,12 +15,22 @@ import {
     eventRoute,
     eventPopupRoute
 } from './';
+import { EventSearchPipe } from './event-search.pipe';
+import { EventSearchCategoryPipe } from './event-search-category.pipe';
 
 const ENTITY_STATES = [...eventRoute, ...eventPopupRoute];
 
 @NgModule({
-    imports: [TicketsSharedModule, RouterModule.forChild(ENTITY_STATES)],
-    declarations: [EventComponent, EventDetailComponent, EventUpdateComponent, EventDeleteDialogComponent, EventDeletePopupComponent],
+    imports: [TicketsSharedModule, RouterModule.forChild(ENTITY_STATES), NgSelectModule, FormsModule],
+    declarations: [
+        EventComponent,
+        EventDetailComponent,
+        EventUpdateComponent,
+        EventDeleteDialogComponent,
+        EventDeletePopupComponent,
+        EventSearchPipe,
+        EventSearchCategoryPipe
+    ],
     entryComponents: [EventComponent, EventUpdateComponent, EventDeleteDialogComponent, EventDeletePopupComponent],
     providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
