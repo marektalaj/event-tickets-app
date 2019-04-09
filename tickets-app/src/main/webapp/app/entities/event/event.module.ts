@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
 import { NgSelectModule } from '@ng-select/ng-select';
+
 import { FormsModule } from '@angular/forms';
 
 import { TicketsSharedModule } from 'app/shared';
