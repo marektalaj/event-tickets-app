@@ -13,3 +13,19 @@ Stworzenia zak�adki z wydarzeniami
 Dodanie nowego modeli do pobierania wybranych danych z bazy,
 Dodanie wyszukiwania po nazwie wydarzenia, miejscowości oraz po kategorii
 Dodanie do relacji Event kolumn image oraz price.
+
+TODO:
+dac md zamiast md readme
+osobny folder na LiteEvent bo nie są zwiazne z klasa,a  z widokami.
+testów do pipów nie trzeba.
+
+
+koszyk, dodawanie do koszyka biletu,
+podsumowanie,
+wyślij potwierdzenie na email, ze kupiles bilet.
+
+Potem wysylamy pdfa!!
+
+Płatnosć:
+klient wchodzi na domene i wybiera, czy zapłacił, czy nie zaplacił.
+Sprawdzić, czy opłacone. API cashBilla???!

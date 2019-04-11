@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             injector = getTestBed();
             service = injector.get(TicketService);
             httpMock = injector.get(HttpTestingController);
-            var currentDate;
+            let currentDate;
             currentDate = moment();
             elemDefault = new Ticket(
                 0,
