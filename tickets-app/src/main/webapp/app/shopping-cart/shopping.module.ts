@@ -1,6 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SubmitComponent } from './submit/submit.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
     imports: [
@@ -12,7 +14,7 @@ import { SubmitComponent } from './submit/submit.component';
             /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
         ])
     ],
-    declarations: [SubmitComponent],
+    declarations: [SubmitComponent, PaymentComponent, ConfirmationComponent],
     entryComponents: [],
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

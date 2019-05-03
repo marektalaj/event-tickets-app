@@ -1,0 +1,12 @@
+<div>
+    <button type="submit"
+            [routerLink]="['/confirmation',{paymentStatus:paymentDone}]"
+            class="btn btn-info">
+        <p>płatność pomyślna</p>
+    </button>
+    <button type="submit"
+            [routerLink]="['/confirmation', {paymentStatus:paymentNotDone}]"
+            class="btn btn-info">
+        <p>płatność niepomyślna</p>
+    </button>
+</div>

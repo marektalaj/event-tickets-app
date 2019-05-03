@@ -24,6 +24,8 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
 import { TicketShoppingModule } from 'app/shopping-cart/shopping.module';
 import { TicketsShoppingCartModule } from 'app/shopping-cart/shopping-cart/shopping-cart.module';
 import { TicketsSubmitModule } from 'app/shopping-cart/submit/submit.module';
+import { TicketsConfirmationModule } from 'app/shopping-cart/confirmation/confirmation.module';
+import { TicketsPaymentModule } from 'app/shopping-cart/payment/payment.module';
 
 @NgModule({
     imports: [
@@ -42,6 +44,8 @@ import { TicketsSubmitModule } from 'app/shopping-cart/submit/submit.module';
         TicketsAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         TicketsEntityModule,
+        TicketsConfirmationModule,
+        TicketsPaymentModule,
         TicketsShoppingCartModule,
         TicketsSubmitModule,
         TicketsAppRoutingModule
