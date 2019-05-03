@@ -59,7 +59,7 @@ export class ShoppingCartComponent implements OnInit {
                 quantity: 1
             };
             // if (localStorage.getItem('cart') == null) {
-            if (this.items == null) {
+            if (localStorage.getItem('cart') == null) {
                 const cart: any = [];
                 cart.push(JSON.stringify(item));
                 localStorage.setItem('cart', JSON.stringify(cart));

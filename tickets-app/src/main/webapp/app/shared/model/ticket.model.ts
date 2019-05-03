@@ -10,5 +10,5 @@ export interface ITicket {
 }
 
 export class Ticket implements ITicket {
-    constructor(public id?: number, public eventId?: IEvent, public orderId?: IOrder, price?: number, public discount?: number) {}
+    constructor(public id?: number, public eventId?: IEvent, public orderId?: IOrder, public price?: number, public discount?: number) {}
 }
