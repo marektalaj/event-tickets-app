@@ -26,6 +26,9 @@ public class EventLite {
     @Column(name = "event_address")
     private String eventAddress;
 
+    @Column(name = "price")
+    private Double price;
+
     @Column(name = "amount_of_tickets")
     private Long amountOfTickets;
 

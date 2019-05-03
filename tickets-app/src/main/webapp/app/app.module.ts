@@ -17,9 +17,13 @@ import { TicketsAppRoutingModule } from './app-routing.module';
 import { TicketsHomeModule } from './home/home.module';
 import { TicketsAccountModule } from './account/account.module';
 import { TicketsEntityModule } from './entities/entity.module';
+
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { TicketShoppingModule } from 'app/shopping-cart/shopping.module';
+import { TicketsShoppingCartModule } from 'app/shopping-cart/shopping-cart/shopping-cart.module';
+import { TicketsSubmitModule } from 'app/shopping-cart/submit/submit.module';
 
 @NgModule({
     imports: [
@@ -38,6 +42,8 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         TicketsAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         TicketsEntityModule,
+        TicketsShoppingCartModule,
+        TicketsSubmitModule,
         TicketsAppRoutingModule
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],

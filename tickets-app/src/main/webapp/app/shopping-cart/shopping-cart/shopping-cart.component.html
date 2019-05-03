@@ -1,0 +1,39 @@
+<h3>Cart Info</h3>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Option</th>
+            <th><span jhiTranslate="ticketsApp.event.categoryId">ID</span></th>
+            <th><span jhiTranslate="ticketsApp.event.name">Name</span></th>
+            <th><span jhiTranslate="ticketsApp.event.eventDate">Event Date</span></th>
+            <th><span jhiTranslate="ticketsApp.event.eventAddress">Event Address</span></th>
+            <th><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></th>
+            <th>Sub Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of items">
+            <td align="center">
+                <a (click)="remove(item.event.id)">X</a>
+            </td>
+            <td>{{item.event.categoryId.name}}</td>
+            <td>{{item.event.name}}</td>
+            <td>{{item.event.eventDate | date:'medium'}}</td>
+            <td>{{item.event.eventAddress}}</td>
+            <td>{{item.event.amountOfTickets}}</td>
+            <td>{{item.event.description}}</td>
+        </tr>
+        <tr>
+            <td colspan="6" align="right">Total</td>
+            <td>{{total}}</td>
+        </tr>
+
+    </table>
+    <button class="right" type="submit"
+            [routerLink]="['/submit']"
+            class="btn btn-info">
+        <fa-icon [icon]="'arrow-right'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.submit"> Submit</span>
+    </button>
+</div>
