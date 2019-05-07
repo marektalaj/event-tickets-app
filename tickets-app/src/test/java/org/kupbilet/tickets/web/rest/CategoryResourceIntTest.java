@@ -75,6 +75,7 @@ public class CategoryResourceIntTest {
             .setConversionService(createFormattingConversionService())
             .setMessageConverters(jacksonMessageConverter)
             .setValidator(validator).build();
+        this.category.setName(DEFAULT_NAME);
     }
 
     /**
@@ -177,9 +178,8 @@ public class CategoryResourceIntTest {
 
         // Update the category
         Category updatedCategory = categoryRepository.findById(category.getId()).get();
+        updatedCategory.setName(UPDATED_NAME);
         // Disconnect from session so that the updates on updatedCategory are not directly saved in db
-
-
 
         restCategoryMockMvc.perform(put("/api/categories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)

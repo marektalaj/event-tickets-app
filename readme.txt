@@ -14,18 +14,13 @@ Dodanie nowego modeli do pobierania wybranych danych z bazy,
 Dodanie wyszukiwania po nazwie wydarzenia, miejscowości oraz po kategorii
 Dodanie do relacji Event kolumn image oraz price.
 
+07.05.2019
+Koszyk, dodawanie do koszyka biletu,
+Podsumowanie zamówienia,
+Testy do zamówień i biletów
+
 TODO:
-dac md zamiast md readme
-osobny folder na LiteEvent bo nie są zwiazne z klasa,a  z widokami.
-testów do pipów nie trzeba.
+Wysyłanie biletu na email
+Paypal płatności
 
 
-koszyk, dodawanie do koszyka biletu,
-podsumowanie,
-wyślij potwierdzenie na email, ze kupiles bilet.
-
-Potem wysylamy pdfa!!
-
-Płatnosć:
-klient wchodzi na domene i wybiera, czy zapłacił, czy nie zaplacił.
-Sprawdzić, czy opłacone. API cashBilla???!

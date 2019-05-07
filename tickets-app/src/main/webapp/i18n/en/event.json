@@ -30,7 +30,8 @@
             "yourTickets": "Your tickets:",
             "confirmation": "Confirmation page",
             "buy": "Buy now",
-            "quantity": "Quantity"
+            "quantity": "Quantity",
+            "subTotal": "Sub total"
         }
     }
 }

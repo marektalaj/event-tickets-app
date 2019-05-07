@@ -2,7 +2,9 @@ package org.kupbilet.tickets.web.rest;
 
 import org.kupbilet.tickets.TicketsApp;
 
+import org.kupbilet.tickets.domain.Category;
 import org.kupbilet.tickets.domain.Event;
+import org.kupbilet.tickets.repository.CategoryRepository;
 import org.kupbilet.tickets.repository.EventRepository;
 import org.kupbilet.tickets.web.rest.errors.ExceptionTranslator;
 
@@ -57,8 +59,14 @@ public class EventResourceIntTest {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CAT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_CAT_NAME = "BBBBBBBBBB";
+
     @Autowired
     private EventRepository eventRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -77,7 +85,11 @@ public class EventResourceIntTest {
 
     private MockMvc restEventMockMvc;
 
+    private MockMvc restCategoryMockMvc;
+
     private Event event;
+
+    private Category category;
 
     @Before
     public void setup() {
@@ -89,6 +101,16 @@ public class EventResourceIntTest {
             .setConversionService(createFormattingConversionService())
             .setMessageConverters(jacksonMessageConverter)
             .setValidator(validator).build();
+
+        MockitoAnnotations.initMocks(this);
+        final CategoryResource categoryResource = new CategoryResource(categoryRepository);
+        this.restCategoryMockMvc = MockMvcBuilders.standaloneSetup(categoryResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter)
+            .setValidator(validator).build();
+        this.category.setName(DEFAULT_NAME);
     }
 
     /**
@@ -97,25 +119,43 @@ public class EventResourceIntTest {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Event createEntity(EntityManager em) {
+    public static Event createEntityEvent(EntityManager em) {
         Event event = new Event()
             .name(DEFAULT_NAME)
             .eventDate(DEFAULT_EVENT_DATE)
             .eventAddress(DEFAULT_EVENT_ADDRESS)
             .amountOfTickets(DEFAULT_AMOUNT_OF_TICKETS)
             .description(DEFAULT_DESCRIPTION);
+        event.setId(0L);
+        Category category2= new Category();
+        category2.setId(0L);
+        event.setCategoryId(category2);
         return event;
     }
 
+    public static Category createEntityCategory(EntityManager em) {
+        Category category = new Category();
+        category.setId(0L);
+        return category;
+    }
+
+
     @Before
     public void initTest() {
-        event = createEntity(em);
+        category = createEntityCategory(em);
+        event = createEntityEvent(em);
     }
 
     @Test
     @Transactional
     public void createEvent() throws Exception {
         int databaseSizeBeforeCreate = eventRepository.findAll().size();
+
+        //Create category
+        restCategoryMockMvc.perform(post("/api/categories")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(category)))
+            .andExpect(status().isCreated());
 
         // Create the Event
         restEventMockMvc.perform(post("/api/events")

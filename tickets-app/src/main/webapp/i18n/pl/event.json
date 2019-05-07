@@ -30,7 +30,8 @@
             "yourTickets": "Twoje bilety:",
             "confirmation": "Potwierdzenie zamówienia",
             "buy": "Kup teraz",
-            "quantity": "Ilość"
+            "quantity": "Ilość",
+            "subTotal": "Cena"
         }
     }
 }

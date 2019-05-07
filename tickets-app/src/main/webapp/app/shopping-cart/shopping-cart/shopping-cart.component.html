@@ -11,7 +11,7 @@
             <th><span jhiTranslate="ticketsApp.event.eventAddress">Event Address</span></th>
             <th><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></th>
             <th><span jhiTranslate="ticketsApp.event.quantity">Quantiy</span></th>
-            <th>Sub Total</th>
+            <th><span jhiTranslate="ticketsApp.event.subTotal">Sub</span></th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +25,7 @@
             <td>{{item.event.eventAddress}}</td>
             <td>{{item.event.amountOfTickets}}</td>
             <td>{{item.quantity}}</td>
+            <td>{{item.event.price}}</td>
         </tr>
         <tr>
             <td colspan="6" align="right">Total</td>

@@ -1,8 +1,10 @@
 package org.kupbilet.tickets.web.rest;
 
+import com.sun.deploy.util.SessionState;
 import org.kupbilet.tickets.TicketsApp;
 
 import org.kupbilet.tickets.domain.Order;
+import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.OrderRepository;
 import org.kupbilet.tickets.web.rest.errors.ExceptionTranslator;
 
@@ -92,6 +94,9 @@ public class OrderResourceIntTest {
         Order order = new Order()
             .orderDate(DEFAULT_ORDER_DATE)
             .isPaid(DEFAULT_IS_PAID);
+        User user = new User();
+        user.setId(0L);
+        order.setClientId(user);
         return order;
     }
 
@@ -152,7 +157,7 @@ public class OrderResourceIntTest {
             .andExpect(jsonPath("$.[*].orderDate").value(hasItem(DEFAULT_ORDER_DATE.toString())))
             .andExpect(jsonPath("$.[*].isPaid").value(hasItem(DEFAULT_IS_PAID)));
     }
-    
+
     @Test
     @Transactional
     public void getOrder() throws Exception {

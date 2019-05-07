@@ -2,7 +2,12 @@ package org.kupbilet.tickets.web.rest;
 
 import org.kupbilet.tickets.TicketsApp;
 
+import org.kupbilet.tickets.domain.Category;
+import org.kupbilet.tickets.domain.Event;
+import org.kupbilet.tickets.domain.Order;
 import org.kupbilet.tickets.domain.Ticket;
+import org.kupbilet.tickets.repository.EventRepository;
+import org.kupbilet.tickets.repository.OrderRepository;
 import org.kupbilet.tickets.repository.TicketRepository;
 import org.kupbilet.tickets.web.rest.errors.ExceptionTranslator;
 
@@ -22,6 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 
@@ -46,8 +53,37 @@ public class TicketResourceIntTest {
     private static final Double DEFAULT_DISCOUNT = 1D;
     private static final Double UPDATED_DISCOUNT = 2D;
 
+    //Event data
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EVENT_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EVENT_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EVENT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_EVENT_ADDRESS = "BBBBBBBBBB";
+
+    private static final Long DEFAULT_AMOUNT_OF_TICKETS = 1L;
+    private static final Long UPDATED_AMOUNT_OF_TICKETS = 2L;
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    //Order data
+    private static final Instant DEFAULT_ORDER_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_ORDER_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Integer DEFAULT_IS_PAID = 1;
+    private static final Integer UPDATED_IS_PAID = 2;
+
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private EventRepository eventRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -66,13 +102,39 @@ public class TicketResourceIntTest {
 
     private MockMvc restTicketMockMvc;
 
+    private MockMvc restEventMockMvc;
+
+    private MockMvc restOrderMockMvc;
+
     private Ticket ticket;
+
+    private Event event;
+
+    private Order order;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
         final TicketResource ticketResource = new TicketResource(ticketRepository);
         this.restTicketMockMvc = MockMvcBuilders.standaloneSetup(ticketResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter)
+            .setValidator(validator).build();
+
+        MockitoAnnotations.initMocks(this);
+        final EventResource eventResource = new EventResource(eventRepository);
+        this.restEventMockMvc = MockMvcBuilders.standaloneSetup(eventResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter)
+            .setValidator(validator).build();
+
+        MockitoAnnotations.initMocks(this);
+        final OrderResource orderResource = new OrderResource(orderRepository);
+        this.restOrderMockMvc = MockMvcBuilders.standaloneSetup(orderResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
             .setConversionService(createFormattingConversionService())
@@ -86,22 +148,64 @@ public class TicketResourceIntTest {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Ticket createEntity(EntityManager em) {
+    public Ticket createEntityTicket(EntityManager em) {
         Ticket ticket = new Ticket()
             .price(DEFAULT_PRICE)
             .discount(DEFAULT_DISCOUNT);
+
+        Event event2 = new Event();
+//        ticket.setId(1L);
+        event2.setId(0L);
+        ticket.setEventId(event2);
+        Order order2 = new Order();
+        order2.setId(0L);
+        ticket.setOrderId(order2);
         return ticket;
+    }
+
+    public static Event createEntityEvent(EntityManager em) {
+        Event event = new Event()
+            .name(DEFAULT_NAME)
+            .eventDate(DEFAULT_EVENT_DATE)
+            .eventAddress(DEFAULT_EVENT_ADDRESS)
+            .amountOfTickets(DEFAULT_AMOUNT_OF_TICKETS)
+            .description(DEFAULT_DESCRIPTION);
+        Category category = new Category();
+        category.setId(0L);
+        event.setCategoryId(category);
+        return event;
+    }
+
+    public static Order createEntityOrder(EntityManager em) {
+        Order order = new Order()
+            .orderDate(DEFAULT_ORDER_DATE)
+            .isPaid(DEFAULT_IS_PAID);
+        return order;
     }
 
     @Before
     public void initTest() {
-        ticket = createEntity(em);
+        event = createEntityEvent(em);
+        order = createEntityOrder(em);
+        ticket = createEntityTicket(em);
     }
 
     @Test
     @Transactional
     public void createTicket() throws Exception {
         int databaseSizeBeforeCreate = ticketRepository.findAll().size();
+
+        //create event for the ticket
+        restEventMockMvc.perform(post("/api/events")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(event)))
+            .andExpect(status().isCreated());
+
+        // Create the Order
+        restOrderMockMvc.perform(post("/api/orders")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(order)))
+            .andExpect(status().isCreated());
 
         // Create the Ticket
         restTicketMockMvc.perform(post("/api/tickets")
@@ -150,7 +254,7 @@ public class TicketResourceIntTest {
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT.doubleValue())));
     }
-    
+
     @Test
     @Transactional
     public void getTicket() throws Exception {
