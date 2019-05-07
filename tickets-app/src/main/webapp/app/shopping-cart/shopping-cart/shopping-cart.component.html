@@ -1,15 +1,16 @@
-<h3>Cart Info</h3>
+<h3><span jhiTranslate="ticketsApp.event.cart">Option</span></h3>
 
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Option</th>
+            <th><span jhiTranslate="ticketsApp.event.option">Option</span></th>
             <th><span jhiTranslate="ticketsApp.event.categoryId">ID</span></th>
             <th><span jhiTranslate="ticketsApp.event.name">Name</span></th>
             <th><span jhiTranslate="ticketsApp.event.eventDate">Event Date</span></th>
             <th><span jhiTranslate="ticketsApp.event.eventAddress">Event Address</span></th>
             <th><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></th>
+            <th><span jhiTranslate="ticketsApp.event.quantity">Quantiy</span></th>
             <th>Sub Total</th>
         </tr>
         </thead>
@@ -23,7 +24,7 @@
             <td>{{item.event.eventDate | date:'medium'}}</td>
             <td>{{item.event.eventAddress}}</td>
             <td>{{item.event.amountOfTickets}}</td>
-            <td>{{item.event.description}}</td>
+            <td>{{item.quantity}}</td>
         </tr>
         <tr>
             <td colspan="6" align="right">Total</td>
@@ -34,6 +35,6 @@
     <button class="right" type="submit"
             [routerLink]="['/submit']"
             class="btn btn-info">
-        <fa-icon [icon]="'arrow-right'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.submit"> Submit</span>
+        <fa-icon [icon]="'arrow-right'"></fa-icon>&nbsp;<span jhiTranslate="ticketsApp.event.submit"> Submit</span>
     </button>
 </div>

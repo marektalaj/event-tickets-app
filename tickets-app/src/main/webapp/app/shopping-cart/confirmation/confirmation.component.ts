@@ -11,6 +11,7 @@ import moment = require('moment');
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { EventService } from 'app/entities/event';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { ConfirmationService } from 'app/shopping-cart/confirmation/confirmation.service';
 
 @Component({
     selector: 'jhi-confirmation',
@@ -24,6 +25,8 @@ export class ConfirmationComponent implements OnInit {
     tickets: ITicket[] = [];
     order: IOrder;
     paymentStatus: string;
+    messege = 'twoje bileciki';
+    element: HTMLElement;
 
     constructor(
         protected accountService: AccountService,
@@ -31,7 +34,8 @@ export class ConfirmationComponent implements OnInit {
         protected orderService: OrderService,
         protected eventService: EventService,
         protected ticketService: TicketService,
-        private alertService: JhiAlertService
+        private alertService: JhiAlertService,
+        protected confirmationService: ConfirmationService
     ) {}
 
     ngOnInit() {
@@ -40,7 +44,9 @@ export class ConfirmationComponent implements OnInit {
             this.activatedRoute.params.subscribe(params => {
                 this.paymentStatus = params['paymentStatus'];
 
-                if (this.paymentStatus === '0') {
+                if (this.paymentStatus === '0' || localStorage.getItem('cart') == null) {
+                    this.element = document.getElementById('error-messege') as HTMLElement;
+                    this.element.innerText = 'Error in payment';
                     console.log('płatność niepomyślna');
                 } else {
                     console.log('płatność pomyślna');
@@ -57,9 +63,12 @@ export class ConfirmationComponent implements OnInit {
                                         item.event.eventDate != null ? moment(item.event.eventDate, DATE_TIME_FORMAT) : null;
                                     this.eventService.update(item.event).subscribe();
                                     let ticket = new Ticket(undefined, item.event, this.order, item.event.price);
+                                    let tempMessege = '';
                                     this.ticketService.create(ticket).subscribe(
                                         (response: HttpResponse<ITicket>) => {
                                             console.log(response.body);
+                                            tempMessege =
+                                                response.body.id + ', ' + response.body.eventId.name + ', ' + response.body.price + ', \n';
                                             this.tickets.push({
                                                 id: response.body.id,
                                                 eventId: response.body.eventId,
@@ -71,8 +80,10 @@ export class ConfirmationComponent implements OnInit {
                                         },
                                         (response: HttpErrorResponse) => this.onError(response.message)
                                     );
+                                    this.messege += tempMessege;
                                 }
                             });
+                            // this.confirmationService.sentMail(this.currentAccount, this.messege).subscribe( );
                         },
                         (res: HttpErrorResponse) => this.onError(res)
                     );

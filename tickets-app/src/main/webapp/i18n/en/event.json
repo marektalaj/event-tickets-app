@@ -22,7 +22,15 @@
             "price": "Ticket price",
             "amountOfTickets": "Amount Of Tickets",
             "description": "Description",
-            "image": "Image"
+            "image": "Image",
+            "option": "Delete",
+            "submit": "Continue",
+            "payment": "Payment",
+            "cart": "Shopping cart",
+            "yourTickets": "Your tickets:",
+            "confirmation": "Confirmation page",
+            "buy": "Buy now",
+            "quantity": "Quantity"
         }
     }
 }

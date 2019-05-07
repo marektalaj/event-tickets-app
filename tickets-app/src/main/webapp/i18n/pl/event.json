@@ -22,7 +22,15 @@
             "price": "Cena biletu",
             "amountOfTickets": "Liczba dostępnych biletów",
             "description": "Opis wydarzenia",
-            "image": "Obrazek"
+            "image": "Obrazek",
+            "option": "Usuń",
+            "submit": "Kontynuuj",
+            "payment": "Płatność",
+            "cart": "Koszyk",
+            "yourTickets": "Twoje bilety:",
+            "confirmation": "Potwierdzenie zamówienia",
+            "buy": "Kup teraz",
+            "quantity": "Ilość"
         }
     }
 }

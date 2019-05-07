@@ -41,7 +41,7 @@ public class MailService {
     private final SpringTemplateEngine templateEngine;
 
     public MailService(JHipsterProperties jHipsterProperties, JavaMailSender javaMailSender,
-            MessageSource messageSource, SpringTemplateEngine templateEngine) {
+                       MessageSource messageSource, SpringTemplateEngine templateEngine) {
 
         this.jHipsterProperties = jHipsterProperties;
         this.javaMailSender = javaMailSender;
@@ -86,6 +86,19 @@ public class MailService {
     }
 
     @Async
+    public void sendEmailFromTemplate(User user, String messege, String templateName, String titleKey) {
+        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Context context = new Context(locale);
+        context.setVariable(USER, user);
+        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        context.setVariable("messege", messege);
+        String content = templateEngine.process(templateName, context);
+        String subject = messageSource.getMessage(titleKey, null, locale);
+        sendEmail(user.getEmail(), subject, content, false, true);
+
+    }
+
+    @Async
     public void sendActivationEmail(User user) {
         log.debug("Sending activation email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "mail/activationEmail", "email.activation.title");
@@ -101,5 +114,11 @@ public class MailService {
     public void sendPasswordResetMail(User user) {
         log.debug("Sending password reset email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "mail/passwordResetEmail", "email.reset.title");
+    }
+
+    @Async
+    public void sentTicketsConfirmation(User user, String messege) {
+        log.debug("Sending tickets order confirmation '{}'", user.getEmail());
+        sendEmailFromTemplate(user,messege, "mail/sentTicketsMail", "email.tickets.title");
     }
 }

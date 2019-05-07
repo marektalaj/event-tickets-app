@@ -3,9 +3,9 @@
         "order": {
             "clientId": "Login użytkownika",
             "home": {
-                "title": "Order",
-                "createLabel": "Dodaj Order",
-                "createOrEditLabel": "Dodaj lub edytuj: Order"
+                "title": "Zamówienie",
+                "createLabel": "Dodaj zamówienie",
+                "createOrEditLabel": "Dodaj lub edytuj: Zamówienie"
             },
             "created": "Utworzono nowy obiekt typu Order z identyfikatorem {{ param }}",
             "updated": "Uaktualniono obiekt typu Order z identyfikatorem {{ param }}",
@@ -14,10 +14,10 @@
                 "question": "Czy na pewno chcesz usunąć Order {{ id }}?"
             },
             "detail": {
-                "title": "Order"
+                "title": "Zamówienie"
             },
-            "orderDate": "Order Date",
-            "isPaid": "Is Paid"
+            "orderDate": "Data zamówienia",
+            "isPaid": "Status płatności"
         }
     }
 }

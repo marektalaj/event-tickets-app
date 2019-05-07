@@ -60,23 +60,28 @@ export class ShoppingCartComponent implements OnInit {
             };
             // if (localStorage.getItem('cart') == null) {
             if (localStorage.getItem('cart') == null) {
-                const cart: any = [];
+                let cart: any = [];
                 cart.push(JSON.stringify(item));
                 localStorage.setItem('cart', JSON.stringify(cart));
             } else {
-                const cart: any = JSON.parse(localStorage.getItem('cart'));
+                let cart: any = JSON.parse(localStorage.getItem('cart'));
                 let index = -1;
                 for (let i = 0; i < cart.length; i++) {
-                    const item: Item = JSON.parse(cart[i]);
-                    if (item.event.id === id) {
+                    let item: Item = JSON.parse(cart[i]);
+                    if (item.event.id == id) {
+                        console.log('tutttttaj');
                         index = i;
                         break;
                     }
                 }
-                if (index === -1) {
+                console.log('dupa');
+                console.log(index);
+                if (index == -1) {
+                    console.log('here');
                     cart.push(JSON.stringify(item));
                     localStorage.setItem('cart', JSON.stringify(cart));
                 } else {
+                    console.log('jestem tutaj');
                     const item: Item = JSON.parse(cart[index]);
                     item.quantity += 1;
                     cart[index] = JSON.stringify(item);

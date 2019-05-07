@@ -48,7 +48,7 @@ public class AccountResource {
      * POST  /register : register the user.
      *
      * @param managedUserVM the managed user View Model
-     * @throws InvalidPasswordException 400 (Bad Request) if the password is incorrect
+     * @throws InvalidPasswordException  400 (Bad Request) if the password is incorrect
      * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already used
      * @throws LoginAlreadyUsedException 400 (Bad Request) if the login is already used
      */
@@ -106,7 +106,7 @@ public class AccountResource {
      *
      * @param userDTO the current user information
      * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already used
-     * @throws RuntimeException 500 (Internal Server Error) if the user login wasn't found
+     * @throws RuntimeException          500 (Internal Server Error) if the user login wasn't found
      */
     @PostMapping("/account")
     public void saveAccount(@Valid @RequestBody UserDTO userDTO) {
@@ -145,10 +145,21 @@ public class AccountResource {
      */
     @PostMapping(path = "/account/reset-password/init")
     public void requestPasswordReset(@RequestBody String mail) {
-       mailService.sendPasswordResetMail(
-           userService.requestPasswordReset(mail)
-               .orElseThrow(EmailNotFoundException::new)
-       );
+        mailService.sendPasswordResetMail(
+            userService.requestPasswordReset(mail)
+                .orElseThrow(EmailNotFoundException::new)
+        );
+    }
+
+    /**
+     * POST   /account/reset-password/init : Send an email to reset the password of the user
+     *
+     * @param mail the mail of the user
+     * @throws EmailNotFoundException 400 (Bad Request) if the email address is not registered
+     */
+    @PostMapping(path = "/account/ticket-confirmation")
+    public void requestTicketsConfirmation(@RequestBody User user, String messege) {
+        mailService.sentTicketsConfirmation(user, messege);
     }
 
     /**
@@ -156,7 +167,7 @@ public class AccountResource {
      *
      * @param keyAndPassword the generated key and the new password
      * @throws InvalidPasswordException 400 (Bad Request) if the password is incorrect
-     * @throws RuntimeException 500 (Internal Server Error) if the password could not be reset
+     * @throws RuntimeException         500 (Internal Server Error) if the password could not be reset
      */
     @PostMapping(path = "/account/reset-password/finish")
     public void finishPasswordReset(@RequestBody KeyAndPasswordVM keyAndPassword) {

@@ -9,6 +9,7 @@ export class LoginModalService {
     constructor(private modalService: NgbModal) {}
 
     open(): NgbModalRef {
+        localStorage.clear();
         if (this.isOpen) {
             return;
         }
