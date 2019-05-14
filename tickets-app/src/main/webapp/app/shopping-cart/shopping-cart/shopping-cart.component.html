@@ -34,8 +34,8 @@
 
     </table>
     <button class="right" type="submit"
-            [routerLink]="['/submit']"
+            (click)="submit()"
             class="btn btn-info">
-        <fa-icon [icon]="'arrow-right'"></fa-icon>&nbsp;<span jhiTranslate="ticketsApp.event.submit"> Submit</span>
+        <fa-icon icon="arrow-right"></fa-icon>&nbsp;<span jhiTranslate="ticketsApp.event.submit"> Submit</span>
     </button>
 </div>

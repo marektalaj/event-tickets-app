@@ -22,14 +22,16 @@ public class ConfirmationModel {
 
     public String getMessege() {
         StringBuilder messege=new StringBuilder();
-        for (Ticket ticket:tickets){
-            messege.append("Bilet o identyfikatorze: ");
-            messege.append(ticket.getId());
-            messege.append(", na wydarzenie: ");
-            messege.append(ticket.getEventId().getName());
-            messege.append(", w cenie: ");
-            messege.append(ticket.getPrice());
-            messege.append("  |  ");
+        if(tickets!=null){
+            for (Ticket ticket:tickets){
+                messege.append("Bilet o identyfikatorze: ");
+                messege.append(ticket.getId());
+                messege.append(", na wydarzenie: ");
+                messege.append(ticket.getEventId().getName());
+                messege.append(", w cenie: ");
+                messege.append(ticket.getPrice());
+                messege.append("  |  ");
+            }
         }
         System.out.println(messege.toString());
         return messege.toString();

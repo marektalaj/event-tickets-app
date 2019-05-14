@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'app/core';
+import { VERSION } from 'app/app.constants';
 import { IEvent } from 'app/shared/model/event.model';
 import { Item } from 'app/shared/model/item.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from 'app/entities/event/event.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { JhiAlertService } from 'ng-jhipster';
@@ -22,7 +23,8 @@ export class ShoppingCartComponent implements OnInit {
         protected accountService: AccountService,
         protected activatedRoute: ActivatedRoute,
         protected jhiAlertService: JhiAlertService,
-        protected eventService: EventService
+        protected eventService: EventService,
+        protected router: Router
     ) {}
 
     ngOnInit() {
@@ -69,19 +71,14 @@ export class ShoppingCartComponent implements OnInit {
                 for (let i = 0; i < cart.length; i++) {
                     let item: Item = JSON.parse(cart[i]);
                     if (item.event.id == id) {
-                        console.log('tutttttaj');
                         index = i;
                         break;
                     }
                 }
-                console.log('dupa');
-                console.log(index);
                 if (index == -1) {
-                    console.log('here');
                     cart.push(JSON.stringify(item));
                     localStorage.setItem('cart', JSON.stringify(cart));
                 } else {
-                    console.log('jestem tutaj');
                     const item: Item = JSON.parse(cart[index]);
                     item.quantity += 1;
                     cart[index] = JSON.stringify(item);
@@ -90,7 +87,10 @@ export class ShoppingCartComponent implements OnInit {
             }
             this.loadCart();
         } else {
-            this.loadCart();
+            if (localStorage.getItem('cart') == null) {
+            } else {
+                this.loadCart();
+            }
         }
     }
 
@@ -119,10 +119,30 @@ export class ShoppingCartComponent implements OnInit {
             }
         }
         localStorage.setItem('cart', JSON.stringify(cart));
+        this.items.forEach((itemToRemove, index) => {
+            if (itemToRemove.event.id == id) {
+                if (itemToRemove.quantity > 1) {
+                    this.items[index].quantity--;
+                } else {
+                    this.items.splice(index, 1);
+                }
+            }
+        });
         this.loadCart();
+        if (this.items.length == 0) {
+            localStorage.clear();
+        }
     }
 
     protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    submit() {
+        if (localStorage.getItem('cart') == null) {
+            alert('Your shopping cart is empty');
+        } else {
+            this.router.navigate(['/submit']);
+        }
     }
 }

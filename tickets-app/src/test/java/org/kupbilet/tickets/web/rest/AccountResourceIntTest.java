@@ -2,8 +2,7 @@ package org.kupbilet.tickets.web.rest;
 
 import org.kupbilet.tickets.TicketsApp;
 import org.kupbilet.tickets.config.Constants;
-import org.kupbilet.tickets.domain.Authority;
-import org.kupbilet.tickets.domain.User;
+import org.kupbilet.tickets.domain.*;
 import org.kupbilet.tickets.repository.AuthorityRepository;
 import org.kupbilet.tickets.repository.UserRepository;
 import org.kupbilet.tickets.security.AuthoritiesConstants;
@@ -626,7 +625,7 @@ public class AccountResourceIntTest {
 
         restMvc.perform(post("/api/account/change-password")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(new PasswordChangeDTO("1"+currentPassword, "new password"))))
+            .content(TestUtil.convertObjectToJsonBytes(new PasswordChangeDTO("1" + currentPassword, "new password"))))
             .andExpect(status().isBadRequest());
 
         User updatedUser = userRepository.findOneByLogin("change-password-wrong-existing-password").orElse(null);
@@ -819,5 +818,38 @@ public class AccountResourceIntTest {
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(keyAndPassword)))
             .andExpect(status().isInternalServerError());
+    }
+
+    @Test
+    @Transactional
+    public void testSendingConfirmationMail() throws Exception {
+        User user = new User();
+        user.setPassword(RandomStringUtils.random(60));
+        user.setLogin("finish-password-reset-too-small");
+        user.setEmail("finish-password-reset-too-small@example.com");
+        user.setResetDate(Instant.now().plusSeconds(60));
+        user.setResetKey("reset key too small");
+        userRepository.saveAndFlush(user);
+
+        ConfirmationModel confirmationModel = new ConfirmationModel();
+        confirmationModel.setUser(user);
+        Ticket ticket1 = new Ticket();
+        ticket1.setId(0L);
+        ticket1.setEventId(new Event());
+        ticket1.setOrderId(new Order());
+        ticket1.setPrice(100.0);
+        Ticket ticket2 = new Ticket();
+        ticket2.setId(0L);
+        ticket2.setEventId(new Event());
+        ticket2.setOrderId(new Order());
+        ticket2.setPrice(100.0);
+        Ticket[] tickets = {ticket1,ticket2};
+
+
+        restMvc.perform(
+            post("/api/account/ticket-confirmation")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(confirmationModel)))
+            .andExpect(status().isOk());
     }
 }
