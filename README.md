@@ -19,9 +19,10 @@ Koszyk, dodawanie do koszyka biletu,
 Podsumowanie zamówienia,
 Testy do zamówień i biletów
 
-TODO:
+14.05.2019
 Wysyłanie biletu na email
-Paypal płatności
-Zakładka z biletami klienta
+Poprawa płatności, nie ma możliwości oszukania systemu
+Płatności paypal (sandbox)
+
 
 
