@@ -1,12 +1,23 @@
-<div>
-    <button type="submit"
-            [routerLink]="['/confirmation',{paymentStatus:paymentDone}]"
-            class="btn btn-info">
-        <p>płatność pomyślna</p>
-    </button>
-    <button type="submit"
-            [routerLink]="['/confirmation', {paymentStatus:paymentNotDone}]"
-            class="btn btn-info">
-        <p>płatność niepomyślna</p>
-    </button>
+
+
+<div class="mt-2" *ngIf="showSuccess">
+    <div class="alert alert-success mt-2">
+        Yeah! Your <em>sandbox</em> transaction was successful.
+    </div>
+</div>
+
+<div class="mt-2" *ngIf="showError">
+    <div class="alert alert-danger mt-2">
+        Oh no! Your <em>sandbox</em> transaction failed.
+    </div>
+</div>
+
+<div class="mt-2" *ngIf="showCancel">
+    <div class="alert alert-info mt-2">
+        Your transaction was cancelled.
+    </div>
+</div>
+
+<div class="mt-2">
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
 </div>

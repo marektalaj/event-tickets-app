@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { AccountService } from 'app/core';
 import { ITicket, Ticket } from 'app/shared/model/ticket.model';
 import { IOrder, Order } from 'app/shared/model/order.model';
@@ -13,6 +13,7 @@ import { EventService } from 'app/entities/event';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ConfirmationService } from 'app/shopping-cart/confirmation/confirmation.service';
 import { Confirmation, IConfirmation } from 'app/shared/model/confirmation.model';
+import { DataService } from 'app/shopping-cart/data.service';
 
 @Component({
     selector: 'jhi-confirmation',
@@ -25,10 +26,11 @@ export class ConfirmationComponent implements OnInit {
     total: number;
     tickets: ITicket[] = [];
     order: IOrder;
-    paymentStatus: string;
     messege = 'twoje bileciki';
     confirmation: IConfirmation;
     element: HTMLElement;
+
+    isPaidSuccessful: string;
 
     constructor(
         protected accountService: AccountService,
@@ -37,16 +39,18 @@ export class ConfirmationComponent implements OnInit {
         protected eventService: EventService,
         protected ticketService: TicketService,
         private alertService: JhiAlertService,
-        protected confirmationService: ConfirmationService
+        protected confirmationService: ConfirmationService,
+        private dataService: DataService
     ) {}
 
     ngOnInit() {
-        this.accountService.identity().then(account => {
-            this.currentAccount = account;
-            this.activatedRoute.params.subscribe(params => {
-                this.paymentStatus = params['paymentStatus'];
+        this.dataService.currentMessage.subscribe(message => {
+            this.isPaidSuccessful = message;
+            console.log(this.isPaidSuccessful);
+            this.accountService.identity().then(account => {
+                this.currentAccount = account;
 
-                if (this.paymentStatus === '0' || localStorage.getItem('cart') == null) {
+                if (this.isPaidSuccessful === 'no' || localStorage.getItem('cart') == null) {
                     this.element = document.getElementById('error-messege') as HTMLElement;
                     this.element.innerText = 'Error in payment';
                     console.log('płatność niepomyślna');
