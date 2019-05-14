@@ -117,7 +117,8 @@ public class Ticket implements Serializable {
     @Override
     public String toString() {
         return "Ticket{" +
-            "id=" + getId() +
+            ", id=" + getId() +
+            ", event=" + getEventId().getName()+
             ", price=" + getPrice() +
             ", discount=" + getDiscount() +
             "}";

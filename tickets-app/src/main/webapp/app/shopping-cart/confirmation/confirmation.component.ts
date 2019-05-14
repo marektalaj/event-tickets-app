@@ -12,6 +12,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { EventService } from 'app/entities/event';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ConfirmationService } from 'app/shopping-cart/confirmation/confirmation.service';
+import { Confirmation, IConfirmation } from 'app/shared/model/confirmation.model';
 
 @Component({
     selector: 'jhi-confirmation',
@@ -26,6 +27,7 @@ export class ConfirmationComponent implements OnInit {
     order: IOrder;
     paymentStatus: string;
     messege = 'twoje bileciki';
+    confirmation: IConfirmation;
     element: HTMLElement;
 
     constructor(
@@ -56,19 +58,20 @@ export class ConfirmationComponent implements OnInit {
                         (res: HttpResponse<IOrder>) => {
                             this.order = res.body;
                             this.loadCart();
+                            let howManyTickets = 0;
+                            this.items.forEach((item, index) => {
+                                howManyTickets += item.quantity;
+                            });
                             this.items.forEach((item, index) => {
                                 for (let i = 0; i < item.quantity; i++) {
                                     item.event.amountOfTickets--;
-                                    item.event.eventDate =
-                                        item.event.eventDate != null ? moment(item.event.eventDate, DATE_TIME_FORMAT) : null;
-                                    this.eventService.update(item.event).subscribe();
+                                }
+                                item.event.eventDate = item.event.eventDate != null ? moment(item.event.eventDate, DATE_TIME_FORMAT) : null;
+                                this.eventService.update(item.event).subscribe();
+                                for (let i = 0; i < item.quantity; i++) {
                                     let ticket = new Ticket(undefined, item.event, this.order, item.event.price);
-                                    let tempMessege = '';
                                     this.ticketService.create(ticket).subscribe(
                                         (response: HttpResponse<ITicket>) => {
-                                            console.log(response.body);
-                                            tempMessege =
-                                                response.body.id + ', ' + response.body.eventId.name + ', ' + response.body.price + ', \n';
                                             this.tickets.push({
                                                 id: response.body.id,
                                                 eventId: response.body.eventId,
@@ -76,14 +79,16 @@ export class ConfirmationComponent implements OnInit {
                                                 price: response.body.price,
                                                 discount: response.body.discount
                                             });
+                                            if (this.tickets.length == howManyTickets) {
+                                                let confirmation = new Confirmation(this.currentAccount, this.tickets);
+                                                this.confirmationService.sentMail(confirmation).subscribe();
+                                            }
                                             localStorage.clear();
                                         },
                                         (response: HttpErrorResponse) => this.onError(response.message)
                                     );
-                                    this.messege += tempMessege;
                                 }
                             });
-                            // this.confirmationService.sentMail(this.currentAccount, this.messege).subscribe( );
                         },
                         (res: HttpErrorResponse) => this.onError(res)
                     );

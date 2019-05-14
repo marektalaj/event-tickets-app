@@ -1,6 +1,7 @@
 package org.kupbilet.tickets.web.rest;
 
 
+import org.kupbilet.tickets.domain.ConfirmationModel;
 import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.UserRepository;
 import org.kupbilet.tickets.security.SecurityUtils;
@@ -158,8 +159,8 @@ public class AccountResource {
      * @throws EmailNotFoundException 400 (Bad Request) if the email address is not registered
      */
     @PostMapping(path = "/account/ticket-confirmation")
-    public void requestTicketsConfirmation(@RequestBody User user, String messege) {
-        mailService.sentTicketsConfirmation(user, messege);
+    public void requestTicketsConfirmation(@RequestBody ConfirmationModel confirmationModel) {
+        mailService.sentTicketsConfirmation(confirmationModel.getUser(), confirmationModel.getMessege());
     }
 
     /**
