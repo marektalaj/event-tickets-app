@@ -24,5 +24,9 @@ Wysyłanie biletu na email
 Poprawa płatności, nie ma możliwości oszukania systemu
 Płatności paypal (sandbox)
 
+TODO:
+Zakładka klienta z zamówieniami - jego historia co zamówił.
+Opis API, screenshoty jak działa aplikacja w readme.
+
 
 
