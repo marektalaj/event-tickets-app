@@ -26,6 +26,8 @@ import { TicketsShoppingCartModule } from 'app/shopping-cart/shopping-cart/shopp
 import { TicketsSubmitModule } from 'app/shopping-cart/submit/submit.module';
 import { TicketsConfirmationModule } from 'app/shopping-cart/confirmation/confirmation.module';
 import { TicketsPaymentModule } from 'app/shopping-cart/payment/payment.module';
+import { HistoryComponent } from './history/history/history.component';
+import { TicketsHistoryModule } from 'app/history/history/history.module';
 
 @NgModule({
     imports: [
@@ -48,9 +50,18 @@ import { TicketsPaymentModule } from 'app/shopping-cart/payment/payment.module';
         TicketsPaymentModule,
         TicketsShoppingCartModule,
         TicketsSubmitModule,
+        TicketsHistoryModule,
         TicketsAppRoutingModule
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+    declarations: [
+        JhiMainComponent,
+        NavbarComponent,
+        ErrorComponent,
+        PageRibbonComponent,
+        ActiveMenuDirective,
+        FooterComponent,
+        HistoryComponent
+    ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
