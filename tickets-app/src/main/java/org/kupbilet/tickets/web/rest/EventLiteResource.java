@@ -1,9 +1,8 @@
 package org.kupbilet.tickets.web.rest;
 
-import org.kupbilet.tickets.domain.Event;
-import org.kupbilet.tickets.domain.EventLite;
-import org.kupbilet.tickets.repository.EventLiteRepository;
-import org.kupbilet.tickets.repository.EventRepository;
+import org.kupbilet.tickets.domain.domain.lite.EventLite;
+import org.kupbilet.tickets.repository.repository.lite.EventLiteRepository;
+import org.kupbilet.tickets.web.rest.EventResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

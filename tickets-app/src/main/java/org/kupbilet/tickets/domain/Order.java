@@ -1,6 +1,8 @@
 package org.kupbilet.tickets.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,6 +10,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -30,6 +33,7 @@ public class Order implements Serializable {
 
     @ManyToOne
     @JoinColumn (name = "ID_Client")
+    @JsonBackReference
     private User clientId;
 
 
@@ -40,8 +44,9 @@ public class Order implements Serializable {
     @Column(name = "is_paid")
     private Integer isPaid;
 
-    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL)
-    private Set<Ticket> tickets;
+    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Set<Ticket> tickets= new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -92,6 +97,14 @@ public class Order implements Serializable {
             return false;
         }
         return Objects.equals(getId(), order.getId());
+    }
+
+    public Set<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(Set<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
     @Override

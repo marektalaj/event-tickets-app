@@ -1,4 +1,6 @@
-package org.kupbilet.tickets.domain;
+package org.kupbilet.tickets.domain.domain.lite;
+
+import org.kupbilet.tickets.domain.Category;
 
 import javax.persistence.*;
 import java.time.Instant;

@@ -1,5 +1,6 @@
 package org.kupbilet.tickets.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.kupbilet.tickets.config.Constants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -7,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.validation.constraints.Email;
 
 import javax.persistence.*;
@@ -96,8 +98,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
 
-    @OneToMany(mappedBy = "clientId", cascade = CascadeType.ALL)
-    private Set<Order> orders;
+
+    @OneToMany(mappedBy = "clientId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Set<Order> orders = new HashSet<>();
 
 
     public Long getId() {
@@ -203,6 +207,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     @Override

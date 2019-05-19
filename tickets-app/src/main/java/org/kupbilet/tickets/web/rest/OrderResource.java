@@ -1,5 +1,7 @@
 package org.kupbilet.tickets.web.rest;
 import org.kupbilet.tickets.domain.Order;
+import org.kupbilet.tickets.domain.Ticket;
+import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.OrderRepository;
 import org.kupbilet.tickets.web.rest.errors.BadRequestAlertException;
 import org.kupbilet.tickets.web.rest.util.HeaderUtil;
@@ -14,6 +16,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing Order.
@@ -108,4 +111,13 @@ public class OrderResource {
         orderRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/orders/{orderId}/tickets")
+    public Set<Ticket> getTicketsByOrderId(@PathVariable(value = "orderId") Long orderId) {
+        Optional<Order> order= orderRepository.findById(orderId);
+        Order temp=order.get();
+
+        return temp.getTickets();
+    }
+
 }

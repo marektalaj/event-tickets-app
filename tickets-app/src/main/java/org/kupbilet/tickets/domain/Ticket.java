@@ -1,6 +1,7 @@
 package org.kupbilet.tickets.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -32,6 +33,7 @@ public class Ticket implements Serializable {
 
     @ManyToOne
     @JoinColumn (name = "ID_Order")
+    @JsonBackReference
     private Order orderId;
 
 
