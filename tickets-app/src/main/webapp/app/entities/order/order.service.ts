@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { IOrder } from 'app/shared/model/order.model';
+import { ITicket } from 'app/shared/model/ticket.model';
 
 type EntityResponseType = HttpResponse<IOrder>;
 type EntityArrayResponseType = HttpResponse<IOrder[]>;
@@ -47,6 +48,10 @@ export class OrderService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    tickets(id: number): Observable<HttpResponse<ITicket[]>> {
+        return this.http.get<ITicket[]>(`${this.resourceUrl}/${id}/tickets`, { observe: 'response' });
     }
 
     protected convertDateFromClient(order: IOrder): IOrder {

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IUser } from './user.model';
+import { IOrder } from 'app/shared/model/order.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -35,5 +36,9 @@ export class UserService {
 
     authorities(): Observable<string[]> {
         return this.http.get<string[]>(SERVER_API_URL + 'api/users/authorities');
+    }
+
+    orders(id: number): Observable<HttpResponse<IOrder[]>> {
+        return this.http.get<IOrder[]>(`${this.resourceUrl}/${id}/orders`, { observe: 'response' });
     }
 }

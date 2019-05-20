@@ -6,6 +6,7 @@
             "home": "Strona domowa",
             "events": "Wydarzenia",
             "shopping-cart": "Koszyk",
+            "history": "Historia zamówień",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Encje",

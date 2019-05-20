@@ -26,6 +26,10 @@ import { TicketsShoppingCartModule } from 'app/shopping-cart/shopping-cart/shopp
 import { TicketsSubmitModule } from 'app/shopping-cart/submit/submit.module';
 import { TicketsConfirmationModule } from 'app/shopping-cart/confirmation/confirmation.module';
 import { TicketsPaymentModule } from 'app/shopping-cart/payment/payment.module';
+import { HistoryComponent } from './History/history/history.component';
+import { TicketsHistoryModule } from 'app/History/history/history.module';
+import { HistoryTicketsComponent } from './History/history-tickets/history-tickets.component';
+import { TicketsToShowModule } from 'app/History/history-tickets/history-tickets.module';
 
 @NgModule({
     imports: [
@@ -44,6 +48,8 @@ import { TicketsPaymentModule } from 'app/shopping-cart/payment/payment.module';
         TicketsAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         TicketsEntityModule,
+        TicketsToShowModule,
+        TicketsHistoryModule,
         TicketsConfirmationModule,
         TicketsPaymentModule,
         TicketsShoppingCartModule,

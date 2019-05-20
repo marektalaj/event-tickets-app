@@ -10,6 +10,7 @@ import {
     faShoppingCart,
     faArrowRight,
     faSort,
+    faHistory,
     faSortUp,
     faSortDown,
     faSync,
@@ -57,6 +58,7 @@ library.add(faTimes);
 library.add(faArrowLeft);
 library.add(faSave);
 library.add(faArrowRight);
+library.add(faHistory);
 library.add(faPlus);
 library.add(faPencilAlt);
 library.add(faBars);
