@@ -54,9 +54,18 @@ import { TicketsToShowModule } from 'app/History/history-tickets/history-tickets
         TicketsPaymentModule,
         TicketsShoppingCartModule,
         TicketsSubmitModule,
+        TicketsHistoryModule,
         TicketsAppRoutingModule
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+    declarations: [
+        JhiMainComponent,
+        NavbarComponent,
+        ErrorComponent,
+        PageRibbonComponent,
+        ActiveMenuDirective,
+        FooterComponent,
+        HistoryComponent
+    ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
