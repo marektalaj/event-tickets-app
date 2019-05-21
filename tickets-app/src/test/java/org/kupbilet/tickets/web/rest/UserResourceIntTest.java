@@ -301,6 +301,15 @@ public class UserResourceIntTest {
 
     @Test
     @Transactional
+    public void getOrdersByUserId() throws Exception {
+        userRepository.saveAndFlush(user);
+
+        restUserMockMvc.perform(get("/api/users/{userId}/orders",user.getId()))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @Transactional
     public void getNonExistingUser() throws Exception {
         restUserMockMvc.perform(get("/api/users/unknown"))
             .andExpect(status().isNotFound());

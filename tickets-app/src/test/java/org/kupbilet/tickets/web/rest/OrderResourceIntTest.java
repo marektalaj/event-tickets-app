@@ -248,6 +248,17 @@ public class OrderResourceIntTest {
 
     @Test
     @Transactional
+    public void getTicketsByOrderId() throws Exception {
+        // Initialize the database
+        orderRepository.saveAndFlush(order);
+
+        // Get the order
+        restOrderMockMvc.perform(get("/api/orders/{orderId}/tickets", order.getId()))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Order.class);
         Order order1 = new Order();
