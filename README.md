@@ -27,6 +27,22 @@ Płatności paypal (sandbox)
 21.05.2019
 Zakładka klienta z zamówieniami, historia zamówionych biletów.
 Opis API, screenshoty jak wygląda API.
+Screeny aplikacji.
+
+
+APPLICATION SCREENS:
+
+![alt text](app_screens/app-screen6.png)
+
+![alt text](app_screens/app-screen1.png)
+
+![alt text](app_screens/app-screen2.png)
+
+![alt text](app_screens/app-screen3.png)
+
+![alt text](app_screens/app-screen4.png)
+
+![alt text](app_screens/app-screen5.png)
 
 
 APPLICATION API:
