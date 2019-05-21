@@ -32,6 +32,7 @@ Screeny aplikacji.
 
 APPLICATION SCREENS:
 
+
 ![alt text](app_screens/app-screen6.png)
 
 ![alt text](app_screens/app-screen1.png)
@@ -46,6 +47,7 @@ APPLICATION SCREENS:
 
 
 APPLICATION API:
+
 
 ![alt text](app_screens/generally.png)
 
