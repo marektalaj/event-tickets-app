@@ -11,10 +11,6 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="ticketsApp.order.clientId">ClientId</span></dt>
-        <dd>
-            <span>{{order.clientId.login}}</span>
-        </dd>
         <dt><span jhiTranslate="ticketsApp.order.orderDate">Order Date</span></dt>
         <dd>
             <span>{{order.orderDate}}</span>
@@ -32,7 +28,6 @@
         <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="ticketsApp.ticket.eventId">Event name</span></th>
-            <th><span jhiTranslate="ticketsApp.ticket.orderId">User login</span></th>
             <th><span jhiTranslate="ticketsApp.ticket.price">Price</span></th>
             <th><span jhiTranslate="ticketsApp.ticket.discount">Discount</span></th>
             <th></th>
@@ -42,7 +37,6 @@
         <tr *ngFor="let ticket of tickets ;trackBy: trackId">
             <td><a [routerLink]="['/ticket', ticket.id, 'view' ]">{{ticket.id}}</a></td>
             <td>{{ticket.eventId.name}}</td>
-            <td>{{ticket.orderId.clientId.login}}</td>
             <td>{{ticket.price}}</td>
             <td>{{ticket.discount}}</td>
             <td class="text-right">
