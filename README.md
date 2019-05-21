@@ -30,5 +30,18 @@ Opis API, screenshoty jak wygląda API.
 
 
 APPLICATION API:
+
 ![alt text](app_screens/generally.png)
+
+![alt text](app_screens/account-resource.png)
+
+![alt text](app_screens/category-resource.png)
+
+![alt text](app_screens/event-resource.png)
+
+![alt text](app_screens/order-resource.png)
+
+![alt text](app_screens/ticket-resource.png)
+
+![alt text](app_screens/user-resource.png)
 
