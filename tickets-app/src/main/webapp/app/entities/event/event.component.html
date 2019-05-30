@@ -1,4 +1,30 @@
 <div>
+
+    <div id="wrapper">
+        <H1>Polecane wydarzenia</H1>
+        <div *ngFor="let image of mySlideImages;let i = index">
+
+            <div id="yourdiv" routerLinkActive="active">
+                <dd>
+                    <a [routerLink]="['/event', getid(i), 'view' ]">
+                    <img [attr.width]="'800px'" [attr.height]="'300px'" src="{{image}}" alt="Event image">
+                    </a>
+                </dd>
+            </div>
+        </div>
+    </div>
+    <style>
+        #wrapper {
+            text-align: center;
+        }
+        #yourdiv {
+            display: inline-block;
+        }
+    </style>
+
+
+
+
     <h2 id="page-heading">
         <span jhiTranslate="ticketsApp.event.home.title">Events</span>
         <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity"
@@ -60,7 +86,7 @@
                 </td>
                 <td>{{event.categoryId.name}}</td>
                 <td>{{event.name}}</td>
-                <td>{{event.eventDate | date:'medium'}}</td>
+                <td>{{event.eventDate | date:'longDate'}}</td>
                 <td>{{event.eventAddress}}</td>
                 <td>{{event.amountOfTickets}}</td>
                 <td>{{event.description}}</td>

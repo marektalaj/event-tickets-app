@@ -36,7 +36,7 @@ spring:
             indent-output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://185.23.21.106/videomixhd_kupbilet
+        url: jdbc:mysql://46.245.193.86/videomixhd_kupbilet
         username: videomixhd_bilet
         password: Kupbilet
         hikari:

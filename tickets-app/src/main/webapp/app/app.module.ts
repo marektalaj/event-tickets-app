@@ -30,7 +30,7 @@ import { HistoryComponent } from './History/history/history.component';
 import { TicketsHistoryModule } from 'app/History/history/history.module';
 import { HistoryTicketsComponent } from './History/history-tickets/history-tickets.component';
 import { TicketsToShowModule } from 'app/History/history-tickets/history-tickets.module';
-
+import { PaymentStatusPipe } from './History/payment-status.pipe';
 @NgModule({
     imports: [
         BrowserModule,

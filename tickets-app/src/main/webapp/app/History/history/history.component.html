@@ -15,8 +15,8 @@
             <tbody>
             <tr *ngFor="let order of orders ;trackBy: trackId">
                 <td>{{order.id}}</td>
-                <td>{{order.orderDate | date:'medium'}}</td>
-                <td>{{order.isPaid}}</td>
+                <td>{{order.orderDate | date:'longDate'}}</td>
+                <td>{{order.isPaid| paymentStatusPipek:order.isPaid}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

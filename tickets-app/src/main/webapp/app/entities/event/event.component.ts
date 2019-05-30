@@ -21,6 +21,11 @@ export class EventComponent implements OnInit, OnDestroy {
     currentAccount: any;
     eventSubscriber: Subscription;
     searchTerm: string;
+    mySlideImages = [
+        '../../../content/images/krawczykreklama.jpg',
+        '../../../content/images/manars.jpg',
+        '../../../content/images/youwro.jpg'
+    ];
 
     constructor(
         protected eventService: EventService,
@@ -83,5 +88,22 @@ export class EventComponent implements OnInit, OnDestroy {
 
     protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    getid(i: number) {
+        switch (i) {
+            case 0: {
+                return 2;
+            }
+            case 1: {
+                return 5;
+            }
+            case 2: {
+                return 12;
+            }
+            default: {
+                return 1;
+            }
+        }
     }
 }

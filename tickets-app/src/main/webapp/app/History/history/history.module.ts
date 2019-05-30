@@ -7,12 +7,13 @@ import { TicketsSharedModule } from 'app/shared';
 import { shoppingCartRoute } from 'app/shopping-cart/shopping-cart/shopping-cart.route';
 import { HistoryComponent } from 'app/history/history/history.component';
 import { historyRoute } from 'app/history/history/history.route';
+import { PaymentStatusPipe } from 'app/History/payment-status.pipe';
 
 const ENTITY_STATES = [historyRoute];
 
 @NgModule({
     imports: [TicketsSharedModule, RouterModule.forChild(ENTITY_STATES)],
-    declarations: [HistoryComponent],
+    declarations: [HistoryComponent, PaymentStatusPipe],
     entryComponents: [HistoryComponent],
     providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

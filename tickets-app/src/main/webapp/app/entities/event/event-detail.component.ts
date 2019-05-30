@@ -17,6 +17,7 @@ export class EventDetailComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ event }) => {
             this.event = event;
             this.path = '../../../content/images/' + this.event.image;
+            console.log(this.path);
         });
     }
 

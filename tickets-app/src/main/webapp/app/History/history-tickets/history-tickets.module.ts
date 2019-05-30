@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HistoryTicketsComponent } from 'app/History/history-tickets/history-tickets.component';
 import { JhiLanguageService } from 'ng-jhipster';
 import { historyTicketsRoute } from 'app/History/history-tickets/history-tickets.route';
+import { PaymentStatusPipe } from 'app/History/payment-status.pipe';
 
 const ENTITY_STATES = [historyTicketsRoute];
 

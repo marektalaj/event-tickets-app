@@ -13,12 +13,19 @@
     <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="ticketsApp.order.orderDate">Order Date</span></dt>
         <dd>
-            <span>{{order.orderDate}}</span>
+            <span>{{order.orderDate| date:'longDate'}}</span>
         </dd>
         <dt><span jhiTranslate="ticketsApp.order.isPaid">Is Paid</span></dt>
-        <dd>
-            <span>{{order.isPaid}}</span>
-        </dd>
+        <div *ngIf="order.isPaid==1; else other_content">
+            <dd>
+                <span>Zamówienie opłacone</span>
+            </dd>
+        </div>
+        <ng-template #other_content>
+            <dd>
+                <span>Zamówienie nieopłacone</span>
+            </dd>
+        </ng-template>
     </dl>
 </div>
 <h3><span jhiTranslate="ticketsApp.event.yourTickets">Your tickets:</span></h3>
