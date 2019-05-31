@@ -6,6 +6,10 @@ import org.kupbilet.tickets.config.DefaultProfileUtil;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.apache.commons.lang3.StringUtils;
+import org.kupbilet.tickets.domain.Event;
+import org.kupbilet.tickets.domain.Ticket;
+import org.kupbilet.tickets.domain.User;
+import org.kupbilet.tickets.service.PDFGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -17,10 +21,13 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
+import javax.jws.soap.SOAPBinding;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
@@ -64,6 +71,23 @@ public class TicketsApp {
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
+//        List<Ticket> ticketList=new ArrayList<>();
+//        Event event=new Event();
+//        event.setName("juwenalia");
+//        Ticket ticket1=new Ticket();
+//        ticket1.setEventId(event);
+//        ticket1.setPrice(100.0);
+//        ticket1.setId(0L);
+//        ticketList.add(ticket1);
+//        Ticket ticket2 =new Ticket();
+//        ticket2.setEventId(event);
+//        ticket2.setPrice(100.0);
+//        ticket2.setId(0L);
+//        ticketList.add(ticket2);
+//        User user=new User();
+//        user.setLogin("jakislogin");
+//        PDFGenerator pdfGenerator=new PDFGenerator(ticketList,user);
+//        System.out.println(pdfGenerator.getPath());
     }
 
     private static void logApplicationStartup(Environment env) {

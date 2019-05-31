@@ -1,8 +1,12 @@
 package org.kupbilet.tickets.domain;
 
+import org.omg.CORBA.TIMEOUT;
+
+import java.util.List;
+
 public class ConfirmationModel {
     private User user;
-    private Ticket[] tickets;
+    private List<Ticket> tickets;
 
     public User getUser() {
         return user;
@@ -12,11 +16,11 @@ public class ConfirmationModel {
         this.user = user;
     }
 
-    public Ticket[] getTickets() {
+    public List<Ticket> getTickets() {
         return tickets;
     }
 
-    public void setTickets(Ticket[] tickets) {
+    public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }
 
