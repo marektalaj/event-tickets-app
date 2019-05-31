@@ -6,6 +6,7 @@ import org.kupbilet.tickets.domain.User;
 import org.kupbilet.tickets.repository.UserRepository;
 import org.kupbilet.tickets.security.SecurityUtils;
 import org.kupbilet.tickets.service.MailService;
+import org.kupbilet.tickets.service.PDFGenerator;
 import org.kupbilet.tickets.service.UserService;
 import org.kupbilet.tickets.service.dto.PasswordChangeDTO;
 import org.kupbilet.tickets.service.dto.UserDTO;
@@ -160,7 +161,9 @@ public class AccountResource {
      */
     @PostMapping(path = "/account/ticket-confirmation")
     public void requestTicketsConfirmation(@RequestBody ConfirmationModel confirmationModel) {
-        mailService.sentTicketsConfirmation(confirmationModel.getUser(), confirmationModel.getMessege());
+        PDFGenerator pdfGenerator=new PDFGenerator(confirmationModel.getTickets(),confirmationModel.getUser());
+        String path=pdfGenerator.getPath();
+        mailService.sentTicketsConfirmation(confirmationModel.getUser(), confirmationModel.getMessege(),path);
     }
 
     /**
