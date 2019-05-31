@@ -18,6 +18,8 @@ import { TicketsHomeModule } from './home/home.module';
 import { TicketsAccountModule } from './account/account.module';
 import { TicketsEntityModule } from './entities/entity.module';
 
+import { OwlModule } from 'ngx-owl-carousel';
+
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
@@ -34,6 +36,7 @@ import { PaymentStatusPipe } from './History/payment-status.pipe';
 @NgModule({
     imports: [
         BrowserModule,
+        OwlModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
         NgJhipsterModule.forRoot({
             // set below to true to make alerts look like toast

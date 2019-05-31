@@ -1,26 +1,26 @@
 <div>
 
-    <div id="wrapper">
-        <H1>Polecane wydarzenia</H1>
-        <div *ngFor="let image of mySlideImages;let i = index">
+    <!--<div id="wrapper">-->
+        <!--<H1>Polecane wydarzenia</H1>-->
+        <!--<div *ngFor="let image of mySlideImages;let i = index">-->
 
-            <div id="yourdiv" routerLinkActive="active">
-                <dd>
-                    <a [routerLink]="['/event', getid(i), 'view' ]">
-                    <img [attr.width]="'800px'" [attr.height]="'300px'" src="{{image}}" alt="Event image">
-                    </a>
-                </dd>
-            </div>
-        </div>
-    </div>
-    <style>
-        #wrapper {
-            text-align: center;
-        }
-        #yourdiv {
-            display: inline-block;
-        }
-    </style>
+            <!--<div id="yourdiv" routerLinkActive="active">-->
+                <!--<dd>-->
+                    <!--<a [routerLink]="['/event', getid(i), 'view' ]">-->
+                    <!--<img [attr.width]="'800px'" [attr.height]="'300px'" src="{{image}}" alt="Event image">-->
+                    <!--</a>-->
+                <!--</dd>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<style>-->
+        <!--#wrapper {-->
+            <!--text-align: center;-->
+        <!--}-->
+        <!--#yourdiv {-->
+            <!--display: inline-block;-->
+        <!--}-->
+    <!--</style>-->
 
 
 
