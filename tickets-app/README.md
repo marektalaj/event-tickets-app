@@ -86,3 +86,9 @@ Then, run a Sonar analysis:
 ```
 
 For more information, refer to the [Code quality page][].
+
+TODO:
+-wtorek ostatnie zajęcia
+-wysyłanie pdfa w załaczniku
+-widok szczegółów wydarzenia
+-animacja na stronie głównej, np. jak na slajder.

@@ -33,7 +33,6 @@ export const eventRoute: Routes = [
         path: '',
         component: EventComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'ticketsApp.event.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -45,7 +44,6 @@ export const eventRoute: Routes = [
             event: EventResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'ticketsApp.event.home.title'
         },
         canActivate: [UserRouteAccessService]

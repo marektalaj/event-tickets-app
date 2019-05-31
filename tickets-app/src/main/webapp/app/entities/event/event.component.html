@@ -115,7 +115,7 @@
                     </div>
                 </td>
                 <td>
-                    <a [routerLink]="['/shopping-cart', { id:event.id }]"><span jhiTranslate="ticketsApp.event.buy">Buy now</span></a>
+                    <a *jhiHasAnyAuthority="'ROLE_USER'" [routerLink]="['/shopping-cart', { id:event.id }]"><span jhiTranslate="ticketsApp.event.buy">Buy now</span></a>
                 </td>
             </tr>
             </tbody>

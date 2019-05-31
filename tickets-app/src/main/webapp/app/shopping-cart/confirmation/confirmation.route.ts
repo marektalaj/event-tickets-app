@@ -5,7 +5,7 @@ export const confirmationRoute: Route = {
     path: 'confirmation',
     component: ConfirmationComponent,
     data: {
-        authorities: [],
+        authorities: ['ROLE_USER'],
         pageTitle: 'confirmation.title'
     }
 };

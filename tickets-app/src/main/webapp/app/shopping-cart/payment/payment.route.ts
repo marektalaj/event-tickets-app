@@ -5,7 +5,7 @@ export const paymentRoute: Route = {
     path: 'payment',
     component: PaymentComponent,
     data: {
-        authorities: [],
+        authorities: ['ROLE_USER'],
         pageTitle: 'payment.title'
     }
 };

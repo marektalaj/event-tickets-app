@@ -5,7 +5,7 @@ export const shoppingCartRoute: Route = {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
     data: {
-        authorities: [],
+        authorities: ['ROLE_USER'],
         pageTitle: 'shopping-cart.title'
     }
 };
