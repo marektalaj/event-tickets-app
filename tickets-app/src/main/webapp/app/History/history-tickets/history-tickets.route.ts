@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs/index';
 import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OrderService } from 'app/entities/order/order.service';
+import { UserRouteAccessService } from 'app/core';
 
 @Injectable({ providedIn: 'root' })
 export class OrderResolve implements Resolve<IOrder> {
@@ -30,7 +31,8 @@ export const historyTicketsRoute: Route = {
         order: OrderResolve
     },
     data: {
-        authorities: [],
+        authorities: ['ROLE_USER'],
         pageTitle: 'order-tickets.title'
-    }
+    },
+    canActivate: [UserRouteAccessService]
 };

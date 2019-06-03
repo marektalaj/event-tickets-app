@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Random;
 
 public class PDFGenerator {
-    Document document;
-    String path;
+    private Document document;
+    private String path;
 
     public PDFGenerator(List<Ticket> tickets,User user  ) {
         document=createPDF(tickets,user);

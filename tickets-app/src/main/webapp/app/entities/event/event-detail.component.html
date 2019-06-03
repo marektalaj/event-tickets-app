@@ -5,7 +5,7 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <td>
-                <a *jhiHasAnyAuthority="'ROLE_USER'" [routerLink]="['/shopping-cart', { id:event.id }]"><span jhiTranslate="ticketsApp.event.buy">Buy now</span></a>
+                <a [routerLink]="['/shopping-cart', { id:event.id }]"><span jhiTranslate="ticketsApp.event.buy">Buy now</span></a>
             </td>
             <br>
             <dl class="row-md jh-entity-details">

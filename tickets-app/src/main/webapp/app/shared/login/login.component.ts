@@ -67,7 +67,18 @@ export class JhiLoginModalComponent implements AfterViewInit {
                 const redirect = this.stateStorageService.getUrl();
                 if (redirect) {
                     this.stateStorageService.storeUrl(null);
-                    this.router.navigate([redirect]);
+                    if (redirect.toString().split(';').length > 1) {
+                        this.router.navigate([
+                            '/event/' +
+                                redirect
+                                    .toString()
+                                    .split(';')[1]
+                                    .split('=')[1] +
+                                '/view'
+                        ]);
+                    } else {
+                        this.router.navigate([redirect]);
+                    }
                 }
             })
             .catch(() => {

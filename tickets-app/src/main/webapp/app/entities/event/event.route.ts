@@ -45,8 +45,7 @@ export const eventRoute: Routes = [
         },
         data: {
             pageTitle: 'ticketsApp.event.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        }
     },
     {
         path: 'new',
