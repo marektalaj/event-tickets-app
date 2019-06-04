@@ -1,12 +1,9 @@
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-sm-4">
         <div *ngIf="event">
             <h2><span jhiTranslate="ticketsApp.event.detail.title">Event</span> {{event.name}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
-            <td>
-                <a [routerLink]="['/shopping-cart', { id:event.id }]"><span jhiTranslate="ticketsApp.event.buy">Buy now</span></a>
-            </td>
             <br>
             <dl class="row-md jh-entity-details">
                 <dd>
@@ -28,19 +25,13 @@
                 <dd>
                     <span>{{event.eventAddress}}</span>
                 </dd>
-                <dt><span jhiTranslate="ticketsApp.event.price">Cena</span></dt>
-                <dd>
-                    <span>{{event.price}}</span>
-                </dd>
-                <dt><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></dt>
-                <dd>
-                    <span>{{event.amountOfTickets}}</span>
-                </dd>
                 <dt><span jhiTranslate="ticketsApp.event.description">Description</span></dt>
                 <dd>
                     <span>{{event.description}}</span>
                 </dd>
             </dl>
+
+            <hr>
 
             <button type="submit"
                     (click)="previousState()"
@@ -53,6 +44,27 @@
                     class="btn btn-primary">
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>
+
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div *ngIf="event">
+            <h2 style="color:white">EVENT</h2>
+            <hr>
+            <br>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ticketsApp.event.price">Cena</span></dt>
+                <dd>
+                    <h5 style="color: red;"><b>{{event.price}} zł</b></h5>
+                </dd>
+                <dt><span jhiTranslate="ticketsApp.event.amountOfTickets">Amount Of Tickets</span></dt>
+                <dd>
+                    <span><b>{{event.amountOfTickets}}</b></span>
+                </dd>
+            </dl>
+            <td>
+                <a [routerLink]="['/shopping-cart', { id:event.id }]" style="color: red"><span jhiTranslate="ticketsApp.event.buy"></i><b>Buy now</b></span></a>
+            </td>
 
         </div>
     </div>

@@ -1,6 +1,5 @@
 package org.kupbilet.tickets.web.rest;
 
-import com.sun.deploy.util.SessionState;
 import org.kupbilet.tickets.TicketsApp;
 
 import org.kupbilet.tickets.domain.Order;
